@@ -1,12 +1,6 @@
 Form: MDC_EMCOMM_Target_Station.html
 Def: address=MDCWINLINK-1
-xDef: ExMonth=NOV
-xDef: CALLSIGN=KD2QAR
-xDef: ExYear=2025
-xDef: DAY1=6
-xDef: DAY2=7
-xDef: DAY3=8
-xDef: DAY4=9
+
 To: <var address>
 Cc: AC3EW; N3HU; KB3SPH; NS3X; KN3U; N3WOF; K3JSJ; KG4K; WX3F;
 Subject:: <var Callsign> - <var Day1>-<var Day2> <var ExMonth> <var ExYear> MDC DIGITAL EMCOMM CHALLENGE SCHED
@@ -48,3 +42,6 @@ VarAC
 VarAC HF Target Station Callsign:    KD2QAR
 Mode of Operation: ADVANCED AWAY
 Dates of operation: <var ExMonth> <var Day3>-<var Day4>
+
+** NOTE **
+** Generated using Winlink template located at: https://github.com/kd2qar/winlink-templates/ **
