@@ -189,7 +189,7 @@ Ex: Ask Description of incident:,MU>
 
 Here's an example of a template using ask fields:
 
-Type: Winlink  
+`Type: Winlink  
 To: W4XXX  
 CC:   
 Subj: //WL2K R/AFTER ACTION REPORT TN  
@@ -202,7 +202,7 @@ Description:
 
 BT
 
-NNNN
+NNNN`
 
 Note: These insertion tags also can be used in html forms displayed by Winlink Express.  When using insertion tags in a form, enclose the tag with "{" and "}" characters rather than "<" and ">". For example, {Callsign}.
 
@@ -220,7 +220,7 @@ Template files can be created with a text editor like Notepad and should be plac
 
 Here is a sample template file:
 
-Type:Winlink  
+`Type:Winlink  
 To:user1@mymail.net;user3@mymail.com  
 CC:user2@mymail.net   
 Subj:Test template on <UDateTime>  
@@ -236,7 +236,7 @@ Day          : <Day>
 UTC Day      : <UDay>  
 GPS Location : <GPS>  
 Position     : <Position>  
-Callsign     : <Callsign>  
+Callsign     : <Callsign> ` 
 
 
 After applying this template, the message form would look like this:
@@ -293,14 +293,15 @@ Click "Select the default template" to select the default template.  Make sure "
 
 For example, here is a sample signature block:
 
-[start of template]  
+`[start of template]  
 Msg:
 
 Phil  
 W4PHS  
-[end of template]
+[end of template]`
 
 This template begins with "Msg:" which signals that the following lines go in the body of the message.  A blank line is inserted followed by a name and callsign.  The "Msg:" line is not included in the message body, so each message will be initialized with a single blank line followed by the signature lines.
+
 
 
 
