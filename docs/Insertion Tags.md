@@ -301,3 +301,4 @@ W4PHS
 
 This template begins with "Msg:" which signals that the following lines go in the body of the message.  A blank line is inserted followed by a name and callsign.  The "Msg:" line is not included in the message body, so each message will be initialized with a single blank line followed by the signature lines.
 
+
