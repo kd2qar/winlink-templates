@@ -1,0 +1,7 @@
+To: QTH
+Location: <Position>
+Subject: Position Request
+Readonly: No
+
+Msg:
+KD2QAR 10

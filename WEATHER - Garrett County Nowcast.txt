@@ -1,0 +1,13 @@
+To: NWS.FTPMail.OPS@noaa.gov
+Subject: Garrett County Nowcast
+Location: <Position>
+Readonly: Yes
+
+Msg:
+open
+cd data
+cd forecasts
+cd nowcast
+cd md
+get mdz509.txt
+quit 
