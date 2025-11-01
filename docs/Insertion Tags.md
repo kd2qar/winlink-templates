@@ -169,7 +169,7 @@ Ex: <MsgOriginalAttachmentCount>
 **<MsgOriginalXML>** - If the message being composed is a reply, forward or acknowledgment to a message that was sent with a form attachment, this tag inserts the XML code with the form data that was attached to the original message.  If this is a new message, it inserts nothing.  
 Ex: <MsgOriginalXML>
 
-<Var variable> - Inserts the value assigned to a variable by a "Def:" statement (see above).  
+**<Var variable>** - Inserts the value assigned to a variable by a "Def:" statement (see above).  
 Ex: <var statecode>
 
 **<Select prompt,item1[=value1],item2[=value2],...>** - Displays the prompt string and a drop-down selection list of the items.  If an item is followed by an equal sign and another string, then the value after the equal sign is returned as the value when the item is selected.  If there is no equal sign after an item, then the item text is returned for the selection.  If you want to use a comma in a value string, enclose the value with quote marks.  
@@ -301,6 +301,7 @@ W4PHS
 [end of template]`
 
 This template begins with "Msg:" which signals that the following lines go in the body of the message.  A blank line is inserted followed by a name and callsign.  The "Msg:" line is not included in the message body, so each message will be initialized with a single blank line followed by the signature lines.
+
 
 
 
