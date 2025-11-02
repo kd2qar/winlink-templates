@@ -24,15 +24,15 @@ Ex: Subj:Daily status report from\<Callsign>
 Ex: Attach:C:\Temp\File1.txt, C:\Pictures\Picture1.jpg
 
 **SeqSet:** value - Sets the sequence number to the specified value.  Note: the normal way to set the sequence number is on the Template Settings page.  
-Ex: SeqSet: 0
+Ex: `SeqSet: 0`
 
 **SeqInc:** [value] - Increments the sequence number by the specified value.  If the value is omitted, the sequence number is incremented by 1.  The increment may be negative. Note that SeqSet must be terminated by a colon even if no value is specified.    
-Ex: SeqInc: 1
+Ex: `SeqInc: 1`
 
 **Def:** variable=value - Define a variable and assign a value to it.  The value may contain tag fields such as\<ask> and \<select\>.  The value of a variable can be inserted into a message by using the\<var variable> template insertion tag (see below).  
-Ex: Def: mycallsign=W4PHS    
-Def: mycallsign=<ask Callsign:,UP>    
-Def: statecode=<select Alabama=AL,Georgia=GA,Tennessee=TN>
+Ex: `Def: mycallsign=W4PHS`    
+`Def: mycallsign=<ask Callsign:,UP>`    
+`Def: statecode=<select Alabama=AL,Georgia=GA,Tennessee=TN>`
 
 
 **Readonly:** Yes | No - If Readonly is set to Yes, then the message is created by the form and it cannot be edited by the user.  Tags described below can be used to collect and insert values.
@@ -42,14 +42,16 @@ Def: statecode=<select Alabama=AL,Georgia=GA,Tennessee=TN>
 **ReplyTemplate:** TemplateName -- Specify the name of the template that's to be invoked on the receiving end when a reply is created for this message.  This command only works if it is used in conjunction with a Form command.
 
 **Msg:** [The message body] - If present, populates the message body  
-Ex: Msg:Here is today's status   
+Ex:  
+```
+Msg:Here is today's status   
 Total number of messages handled:   
 Number of hours on station:   
 My current location is:\<GPS>
 
 Regards,  
 <Callsign>
-
+```
 ### ---  Template Insertion Tags  ---
 
 Template insertion tags are enclosed by "<" and ">" characters.  When a template insertion tag is found, it is replaced by the value it represents.  Here is a list of available tags.  Tag keywords are not case sensitive.
@@ -169,29 +171,28 @@ Ex:\<MsgOriginalSize>
 Ex:\<MsgOriginalAttachmentCount>
 
 **\<MsgOriginalXML>** - If the message being composed is a reply, forward or acknowledgment to a message that was sent with a form attachment, this tag inserts the XML code with the form data that was attached to the original message.  If this is a new message, it inserts nothing.  
-Ex:\<MsgOriginalXML>
+Ex:`<MsgOriginalXML>`
 
-<Var variable> - Inserts the value assigned to a variable by a "Def:" statement (see above).  
-Ex:\<var statecode>
+**\<Var variable>** - Inserts the value assigned to a variable by a "Def:" statement (see above).  
+Ex:`<var statecode>`
 
 **\<Select prompt,item1[=value1],item2[=value2],...>** - Displays the prompt string and a drop-down selection list of the items.  If an item is followed by an equal sign and another string, then the value after the equal sign is returned as the value when the item is selected.  If there is no equal sign after an item, then the item text is returned for the selection.  If you want to use a comma in a value string, enclose the value with quote marks.  
-	    Ex:\<select What type of operator are you:,Ham,MARS>  
-	         \<select Which state do you live in:,Alabama=AL,Georgia=GA,Tennessee=TN>  
+	    Ex:`<select What type of operator are you:,Ham,MARS>`  
+	         `<select Which state do you live in:,Alabama=AL,Georgia=GA,Tennessee=TN>`
 
 **\<Ask prompt,options>** - Prompts the user to enter the value that will be inserted into the form.  Prompt is the string to display to prompt for the field.  Options are parameters affecting the input.  If options are specified, separate them from the prompt string with a comma, and use commas to separate multiple options.  Note, since comma is used to terminate the prompt string, you cannot used a comma within a prompt string.  You can spell out the full option keywords, but only the first two characters are significant.  If you want to use a comma in the prompt string, enclose the prompt with quote marks.
 
 The following options may be used:  
 UPPERCASE - Force input for the field to be upper-case characters.  Typically this us used to accept Call signs.  
 MULTILINE - Accept a multi-line, free-form text field.  If this isn't specified, a single-line field is accepted.  
+Ex: `<Ask Your callsign:,UP>`  
+Ex: `<Ask "Name, Position">`  
+Ex: `<Ask Time of incident (hh:mm UTC):>`  
+Ex: `<Ask Description of incident:,MU>`
 
-Ex:\<Ask Your callsign:,UP>  
-Ex:\<Ask "Name, Position">  
-Ex:\<Ask Time of incident (hh:mm UTC):>  
-Ex: Ask Description of incident:,MU>
-
-Here's an example of a template using ask fields:
-
-`Type: Winlink  
+Here's an example of a template using ask fields:  
+```
+Type: Winlink  
 To: W4XXX  
 CC:   
 Subj: //WL2K R/AFTER ACTION REPORT TN  
@@ -204,11 +205,12 @@ Description:
 
 BT
 
-NNNN`
+NNNN
+```
 
 Note: These insertion tags also can be used in html forms displayed by Winlink Express.  When using insertion tags in a form, enclose the tag with "{" and "}" characters rather than "<" and ">". For example, {Callsign}.
 
-Callsign-specific Templates, Global Templates and Standard Templates
+### Callsign-specific Templates, Global Templates and Standard Templates
 
 Winlink Express supports three sets of templates: (1) callsign-specific templates that are associated with a specific callsign selected within Winlink Express; (2) Global templates that are available from any callsign; and (3) Standard templates that are created and supported by the Winlink Development Team.  If you wish to create or edit templates, you should put your templates in the callsign-specific group or the global group. Templates in the standard template group should not be modified.
 
@@ -220,9 +222,9 @@ Standard Templates are in the "Standard Templates" folder.  For example, C:\RMS 
 
 Template files can be created with a text editor like Notepad and should be placed in the appropriate folder.  You also can use the Template Manager feature in Winlink Express you can access by clicking Message/Templates.
 
-Here is a sample template file:
-
-`Type:Winlink  
+Here is a sample template file:  
+```
+Type:Winlink  
 To:user1@mymail.net;user3@mymail.com  
 CC:user2@mymail.net   
 Subj:Test template on\<UDateTime>  
@@ -238,7 +240,8 @@ Day          :\<Day>
 UTC Day      :\<UDay>  
 GPS Location :\<GPS>  
 Position     :\<Position>  
-Callsign     :\<Callsign> ` 
+Callsign     :\<Callsign>
+``` 
 
 
 After applying this template, the message form would look like this:
@@ -246,7 +249,7 @@ After applying this template, the message form would look like this:
 {bmc MessageTemplate.bmp}
 
 
-Template Manager
+### Template Manager
 
 Winlink Express includes a Template Manager where you can view and edit existing templates and add or remove templates.  Start the Template Manager by clicking "Messages" on the main screen menu bar followed by   "Templates..." from the menu drop-down list.
 
@@ -256,7 +259,7 @@ To edit an existing template, select (highlight) the name of the template and th
 
 {bmc TemplateEditor.bmp}
 
-Specifying Favorite Templates
+### Specifying Favorite Templates
 
 Winlink Express allows you to set up to the "favorite" templates.  If a favorite template is set, its name will be displayed on the menu bar for the new-message entry screen.  To set favorite templates, click "Messages" on the main menu followed by "Set favorite templates".  This screen will be displayed:
 
@@ -272,19 +275,19 @@ Here's a new message screen showing "Incident Report" as one of the favorite tem
 
 {bmc FavoriteTemplateExample.png}
 
-Template Settings
+### Template Settings
 
 To control various template settings, click "Messages" on the main menu bar followed by "Template Settings".  A screen similar to this will be displayed:
 
 {bmc Template Settings.png}
 
-Template Sequence Number
+#### Template Sequence Number
 
 Winlink Express provides a sequence number that can be incremented and inserted in templates and forms by using the\<SeqNum> template insertion tag.  Specify on this screen the initial sequence number and the number of digits you want in the inserted value.  Note: If you use the "SeqInc:" template command in your template, it will increment the sequence number before it is inserted.  So, if you want the first inserted sequence number to be 1, set the initial value on this screen to 0.
 
 You also can specify the number of digits you want displayed when the sequence number is inserted.  If the formatted value is shorter than the specified size, it is padded with leading zeros to reach the specified number of digits.
 
-Default Template
+#### Default Template
 
 You can specify a default template that will be used for all messages.  This is useful for creating a signature block to be used for every message.  You can override the default template for a specific message by selecting the template you want to use while you are editing the message.
 
@@ -294,15 +297,17 @@ To set a default template, click "Message" on the main menu and select "Set Defa
 Click "Select the default template" to select the default template.  Make sure "Enable the default template" is checked if you want to use the default.
 
 For example, here is a sample signature block:
-
-`[start of template]  
+```
+[start of template]  
 Msg:
 
 Phil  
 W4PHS  
-[end of template]`
+[end of template]
+```
 
 This template begins with "Msg:" which signals that the following lines go in the body of the message.  A blank line is inserted followed by a name and callsign.  The "Msg:" line is not included in the message body, so each message will be initialized with a single blank line followed by the signature lines.
+
 
 
 
