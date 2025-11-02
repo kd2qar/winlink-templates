@@ -20,10 +20,10 @@
 
 ### Template Insertion Tags
 * Insertion tags are replaced by data values. They can be embedded in Subject, Message and other locations.
-* Enclose tag fields with “<“ and “>”.
-* <Callsign> -- Inserts the current callsign.
-* <UDateTime> -- UTC date and time.
-* <Date> <Time> -- Local date and time.
-* <Position> -- Current or last known latitude and longitude
-* <Var variable> -- Inserts the value of a variable previously specified by “Def:” or by a form.
+* Enclose tag fields with “\<“ and “>”.
+* \<Callsign> -- Inserts the current callsign.
+* \<UDateTime> -- UTC date and time.
+* \<Date> \<Time> -- Local date and time.
+* \<Position> -- Current or last known latitude and longitude
+* \<Var variable> -- Inserts the value of a variable previously specified by “Def:” or by a form.
 
