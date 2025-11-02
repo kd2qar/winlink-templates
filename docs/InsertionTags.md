@@ -28,10 +28,11 @@ Ex: SeqSet: 0
 **SeqInc:** [value] - Increments the sequence number by the specified value.  If the value is omitted, the sequence number is incremented by 1.  The increment may be negative. Note that SeqSet must be terminated by a colon even if no value is specified.    
 Ex: SeqInc: 1
 
-**Def:** variable=value - Define a variable and assign a value to it.  The value may contain tag fields such as <ask> and <select>.  The value of a variable can be inserted into a message by using the <var variable> template insertion tag (see below).  
+**Def:** variable=value - Define a variable and assign a value to it.  The value may contain tag fields such as <ask> and \<select\>.  The value of a variable can be inserted into a message by using the <var variable> template insertion tag (see below).  
 Ex: Def: mycallsign=W4PHS    
 Def: mycallsign=<ask Callsign:,UP>    
 Def: statecode=<select Alabama=AL,Georgia=GA,Tennessee=TN>
+
 
 **Readonly:** Yes | No - If Readonly is set to Yes, then the message is created by the form and it cannot be edited by the user.  Tags described below can be used to collect and insert values.
 
@@ -169,7 +170,7 @@ Ex: <MsgOriginalAttachmentCount>
 **<MsgOriginalXML>** - If the message being composed is a reply, forward or acknowledgment to a message that was sent with a form attachment, this tag inserts the XML code with the form data that was attached to the original message.  If this is a new message, it inserts nothing.  
 Ex: <MsgOriginalXML>
 
-**<Var variable>** - Inserts the value assigned to a variable by a "Def:" statement (see above).  
+<Var variable> - Inserts the value assigned to a variable by a "Def:" statement (see above).  
 Ex: <var statecode>
 
 **<Select prompt,item1[=value1],item2[=value2],...>** - Displays the prompt string and a drop-down selection list of the items.  If an item is followed by an equal sign and another string, then the value after the equal sign is returned as the value when the item is selected.  If there is no equal sign after an item, then the item text is returned for the selection.  If you want to use a comma in a value string, enclose the value with quote marks.  
