@@ -19,7 +19,7 @@
  vertical-align: middle;
  min-width:300px;
  padding:20px;
- width:300px;
+ width:600px;
  }
 .form-field {
  border: 1px solid #c9b7a2;
@@ -33,7 +33,7 @@
  box-shadow: rgba(255,255,255,0.4) 0 1px 0, inset rgba(000,000,000,0.7) 0 0px 0px;
  padding:8px;
  margin-bottom:20px;
- width:280px;
+ width:auto;
  }
 .form-field:focus {
  background: #fff;

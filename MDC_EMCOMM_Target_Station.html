@@ -88,18 +88,24 @@ function TimeNow(Timefld, doprompt) {
     }    
 </script>
 </head>
-<h1><font color='red' >MDC EMCOMM DIGITAL EXERCISE</font></font></h1>
+<h1><font color='maroon' >MDC EMCOMM Digital Exercise</font></h1>
 <form class="form-container" id='TargetStationSched' method='post' action='http://{FormServer}:{FormPort}' enctype='multipart/form-data'>
 <div class="form-title"><h2>Target Station Schedule</h2></div>
+<div class="form-title">Send report to:</div>
+<input type="text" name="address" value='{var address}' >
+<p>
+<div class="form-title">CC To:</div>
+<input type="text" name="ccstations" style="min-width:300px; width:580" value="{var ccstations}">
+<p>
 <div class="form-title">Callsign</div>
 <input type='text' name='Callsign' value='{Callsign}'>
 <p>
-
-<div class="form-title">Dates of Exercise</div>
+<div class="form-title">Exercise Dates</div>
 <!-- <input type='text' name='ExMonth' value='{ExMonth}'><br>
 <input type='text' name="FormFolder" value='{FormFolder}'> -->
 <div class="form-title">Year</div>
-<input type="number" name="ExYear" id="ExYear" value="{ExYear}">
+<input type="number" name="ExYear" id="ExYear" >
+<p>
 <div class="form-title">Month</div>
 <select id="ExMonth" name="ExMonth">
     <option value="JAN">January</option>
@@ -119,10 +125,10 @@ function TimeNow(Timefld, doprompt) {
 <div class="form-title">Days</div>
 <table><tr ><th >Day 1</th><th>Day 2</th><th>Day 3</th><th>Day4</th></tr>
     <tr>
-        <td><input min="1" max="31" type="number" name="Day1" value='{Day1}'></td>
-        <td><input min="1" max="31" type="number" name="Day2" value="{Day2}"></td>
-        <td><input min="1" max="31" type="number" name="Day3" value="{Day3}"></td>
-        <td><input min="1" max="31" type="number" name="Day4" value="{Day4}"></td>
+        <td><input min="1" max="31" type="number" name="Day1" ></td>
+        <td><input min="1" max="31" type="number" name="Day2" ></td>
+        <td><input min="1" max="31" type="number" name="Day3" ></td>
+        <td><input min="1" max="31" type="number" name="Day4" ></td>
     </tr>
 </table>
 <p>

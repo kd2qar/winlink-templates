@@ -1,9 +1,11 @@
+Type: Winlink
 Form: MDC_EMCOMM_Target_Station.html
 Def: address=MDCWINLINK-1
+Def: ccstations=AC3EW; N3HU; KB3SPH; NS3X; KN3U; N3WOF; K3JSJ; KG4K; WX3F;
 
 To: <var address>
-Cc: AC3EW; N3HU; KB3SPH; NS3X; KN3U; N3WOF; K3JSJ; KG4K; WX3F;
-Subject:: <var Callsign> - <var Day1>-<var Day2> <var ExMonth> <var ExYear> MDC DIGITAL EMCOMM CHALLENGE SCHED
+Cc: <var ccstations>
+Subject:<var Callsign> - <var Day1>-<var Day2> <var ExMonth> <var ExYear> MDC DIGITAL EMCOMM CHALLENGE SCHED
 Location: <Position>
 Readonly: No
 Msg:
