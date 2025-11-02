@@ -17,7 +17,7 @@ Ex: To:user1@mymail.com; user2@mymail.com
 Ex: CC:otheruser@mymail.com
 
 **Subj:** [The desired subject line] - If present, populates the subject field.  
-Ex: Subj:Daily status report from <Callsign>
+Ex: Subj:Daily status report from\<Callsign>
 
 **Attach:** file1, file2, ... - If present, specifies one or more files to attach to the message.  
 Ex: Attach:C:\Temp\File1.txt, C:\Pictures\Picture1.jpg
@@ -28,7 +28,7 @@ Ex: SeqSet: 0
 **SeqInc:** [value] - Increments the sequence number by the specified value.  If the value is omitted, the sequence number is incremented by 1.  The increment may be negative. Note that SeqSet must be terminated by a colon even if no value is specified.    
 Ex: SeqInc: 1
 
-**Def:** variable=value - Define a variable and assign a value to it.  The value may contain tag fields such as <ask> and \<select\>.  The value of a variable can be inserted into a message by using the <var variable> template insertion tag (see below).  
+**Def:** variable=value - Define a variable and assign a value to it.  The value may contain tag fields such as\<ask> and \<select\>.  The value of a variable can be inserted into a message by using the\<var variable> template insertion tag (see below).  
 Ex: Def: mycallsign=W4PHS    
 Def: mycallsign=<ask Callsign:,UP>    
 Def: statecode=<select Alabama=AL,Georgia=GA,Tennessee=TN>
@@ -44,7 +44,7 @@ Def: statecode=<select Alabama=AL,Georgia=GA,Tennessee=TN>
 Ex: Msg:Here is today's status   
 Total number of messages handled:   
 Number of hours on station:   
-My current location is: <GPS>
+My current location is:\<GPS>
 
 Regards,  
 <Callsign>
@@ -53,139 +53,139 @@ Regards,
 
 Template insertion tags are enclosed by "<" and ">" characters.  When a template insertion tag is found, it is replaced by the value it represents.  Here is a list of available tags.  Tag keywords are not case sensitive.
 
-**<DateTime>** - Inserts the current local date and time  
+**\<DateTime>** - Inserts the current local date and time  
 Ex: 2011-07-12 17:13:05
 
-**<UDateTime>** - Inserts the current UTC date and time  
+**\<UDateTime>** - Inserts the current UTC date and time  
 Ex: 2011-07-13 00:13:05Z
 
-**<Date>** - Inserts the current local date  
+**\<Date>** - Inserts the current local date  
 Ex: 2011-07-12
 
-**<UDate>** - Inserts the current UTC date  
+**\<UDate>** - Inserts the current UTC date  
 Ex: 2011-07-13Z
 
-**<Time>** - Inserts the current local time  
+**\<Time>** - Inserts the current local time  
 Ex: 17:13:05
 
-**<UTime>** - Inserts the current UTC time  
+**\<UTime>** - Inserts the current UTC time  
 Ex: 00:13:05Z
 
-**<Day>** - Inserts the current local day of week  
+**\<Day>** - Inserts the current local day of week  
 Ex: Tuesday
 
-**<UDay>** - Inserts the current UTC day of week  
+**\<UDay>** - Inserts the current UTC day of week  
 Ex: Wednesday
 
-**<UDTG>** - Inserts the current UTC military style date-time group  
+**\<UDTG>** - Inserts the current UTC military style date-time group  
 Ex: 241205Z NOV 2012
 
-**<GPS>** - Inserts the current GPS location (if available)  
+**\<GPS>** - Inserts the current GPS location (if available)  
 Ex: 46-22.77N 121-35.01W
 
-**<GPS_DECIMAL>** - Inserts the current GPS location (if available)  
+**\<GPS_DECIMAL>** - Inserts the current GPS location (if available)  
 Ex: 46-22.77N 121-35.01W
 
-**<GPS_SIGNED_DECIMAL>** - Inserts the current GPS location as a signed decimal latitude/longitude (if available)  
+**\<GPS_SIGNED_DECIMAL>** - Inserts the current GPS location as a signed decimal latitude/longitude (if available)  
 Ex: 46.3795 -121.5835
 
-**<Position>** - Inserts the current GPS location if available or the last reported position if GPS position is not available.  This can be used to insert a position manually entered on the Position Report screen.  
+**\<Position>** - Inserts the current GPS location if available or the last reported position if GPS position is not available.  This can be used to insert a position manually entered on the Position Report screen.  
 Ex: 46-22.77N 121-35.01W
 
-**<SeqNum>** - Inserts the current value of the sequence number.  Use the "SeqInc" template command to increment the sequence. Set the initial value and the number of digits wanted on the Template Settings screen.  
-Ex: <SeqNum> --> 003
+**\<SeqNum>** - Inserts the current value of the sequence number.  Use the "SeqInc" template command to increment the sequence. Set the initial value and the number of digits wanted on the Template Settings screen.  
+Ex:\<SeqNum> --> 003
 
-**<ProgramVersion>** - Inserts the current Winlink Express program version.  
+**\<ProgramVersion>** - Inserts the current Winlink Express program version.  
 Ex: 1.5.37.0
 
-**<Callsign>** - Inserts the user's Callsign  
+**\<Callsign>** - Inserts the user's Callsign  
 Ex: N6PRW
 
-**<MsgTo>** - Inserts the contents of the To: field on the Message Editor screen at the time the template is opened.  This is mostly useful for reply messages.  
-Ex: <MsgTo>
+**\<MsgTo>** - Inserts the contents of the To: field on the Message Editor screen at the time the template is opened.  This is mostly useful for reply messages.  
+Ex:\<MsgTo>
 
-**<MsgCc>** - Inserts the contents of the To: field on the Message Editor screen at the time the template is opened.  
-Ex: <MsgCc>
+**\<MsgCc>** - Inserts the contents of the To: field on the Message Editor screen at the time the template is opened.  
+Ex:\<MsgCc>
 
-**<MsgSender>** - Inserts the callsign or tactical address of the message sender.  This is selected by the "From:" drop down list of callsigns and tactical addresses on the message composition screen.  
-Ex: <MsgSender>
+**\<MsgSender>** - Inserts the callsign or tactical address of the message sender.  This is selected by the "From:" drop down list of callsigns and tactical addresses on the message composition screen.  
+Ex: \<MsgSender>
 
-**<MsgSubject>** - Inserts the contents of the Subject: field on the Message Editor screen at the time the template is opened.  
-Ex: <MsgSubject>
+**\<MsgSubject>** - Inserts the contents of the Subject: field on the Message Editor screen at the time the template is opened.  
+Ex: \<MsgSubject>
 
-**<MsgBody>** - Inserts the contents of the message body at the time the template is opened.  
-Ex: <MsgBody>
+**\<MsgBody>** - Inserts the contents of the message body at the time the template is opened.  
+Ex: \<MsgBody>
 
-**<MsgP2P>** - Inserts "True" or "False" depending on whether the peer-to-peer message type is selected at the time the template is opened.  
-Ex: <MsgP2P>
+**\<MsgP2P>** - Inserts "True" or "False" depending on whether the peer-to-peer message type is selected at the time the template is opened.  
+Ex: *\<MsgP2P>
 
-**<MsgRO>** - Inserts "True" or "False" depending on whether Radio-only message type is selected at the time the template is opened.  
-Ex: <MsgRO>
+**\<MsgRO>** - Inserts "True" or "False" depending on whether Radio-only message type is selected at the time the template is opened.  
+Ex: *\<MsgRO>
 
-**<MsgIsReply>** - Inserts "True" or "False" depending on whether the message being entered is a reply to another message.  
-Ex: <MsgIsReply>
+**\<MsgIsReply>** - Inserts "True" or "False" depending on whether the message being entered is a reply to another message.  
+Ex:\<MsgIsReply>
 
-**<MsgIsForward>** - Inserts "True" or "False" depending on whether the message being entered is being forwarded..   
-Ex: <MsgIsReply>
+**\<MsgIsForward>** - Inserts "True" or "False" depending on whether the message being entered is being forwarded..   
+Ex:\<MsgIsReply>
 
-**<MsgIsAcknowledgement>** - Inserts "True" or "False" depending on whether the message being entered is an acknowledgment to another message.   
-Ex: <MsgIsReply>
+**\<MsgIsAcknowledgement>** - Inserts "True" or "False" depending on whether the message being entered is an acknowledgment to another message.   
+Ex:\<MsgIsReply>
 
-**<MsgOriginalSubject>** - If the message is a reply, forward or acknowledgment, inserts the subject of the original message.  If this is a new message, it inserts nothing.  
-Ex: <MsgOriginalSubject>
+**\<MsgOriginalSubject>** - If the message is a reply, forward or acknowledgment, inserts the subject of the original message.  If this is a new message, it inserts nothing.  
+Ex:\<MsgOriginalSubject>
 
-**<MsgOriginalSender>** - If the message is a reply, forward or acknowledgment, inserts the address of the sender of the original message.  
-Ex: <MsgOriginalSender>
+**\<MsgOriginalSender>** - If the message is a reply, forward or acknowledgment, inserts the address of the sender of the original message.  
+Ex:\<MsgOriginalSender>
 
-**<MsgOriginalBody>** - If the message is a reply, forward or acknowledgment, inserts the body of the original message.  If this is a new message, it inserts nothing.  
-Ex: <MsgOriginalBody>
+**\<MsgOriginalBody>** - If the message is a reply, forward or acknowledgment, inserts the body of the original message.  If this is a new message, it inserts nothing.  
+Ex:\<MsgOriginalBody>
 
-**<MsgOriginalID>** - If the message is a reply, forward or acknowledgment, inserts the message ID of the original message.  
-Ex: <MsgOriginalBody>
+**\<MsgOriginalID>** - If the message is a reply, forward or acknowledgment, inserts the message ID of the original message.  
+Ex:\<MsgOriginalBody>
 
-**<MsgOriginalDate>** - If the message is a reply, forward or acknowledgment, inserts the date-time of the original message in the format YYYY-MM-DD HH:mm.  
+**\<MsgOriginalDate>** - If the message is a reply, forward or acknowledgment, inserts the date-time of the original message in the format YYYY-MM-DD HH:mm.  
 Ex: Ex: 2011-07-13 00:13
 
-**<MsgOriginalUtcDate>** - If the message is a reply, forward or acknowledgment, inserts the UTC date of the original message in the format YYYY-MM-DDZ.  
+**\<MsgOriginalUtcDate>** - If the message is a reply, forward or acknowledgment, inserts the UTC date of the original message in the format YYYY-MM-DDZ.  
 Ex: Ex: 2011-07-13 00:13
 
-**<MsgOriginalUtcTime>** - If the message is a reply, forward or acknowledgment, inserts the UTC time of the original message in the format HH:mmZ.   
+**\<MsgOriginalUtcTime>** - If the message is a reply, forward or acknowledgment, inserts the UTC time of the original message in the format HH:mmZ.   
 Ex: Ex: 2011-07-13 00:13
 
-**<MsgOriginalLocalDate>** - If the message is a reply, forward or acknowledgment, inserts the local date of the original message in the format YYYY-MM-DD.   
+**\<MsgOriginalLocalDate>** - If the message is a reply, forward or acknowledgment, inserts the local date of the original message in the format YYYY-MM-DD.   
 Ex: Ex: 2011-07-13 00:13
 
-**<MsgOriginalLocalTime>** - If the message is a reply, forward or acknowledgment, inserts the local time of the original message in the format HH:mm.   
+**\<MsgOriginalLocalTime>** - If the message is a reply, forward or acknowledgment, inserts the local time of the original message in the format HH:mm.   
 Ex: Ex: 2011-07-13 00:13
 
-**<MsgOriginalDTG>** - If the message is a reply, forward or acknowledgment, inserts the date-time of the original message in the format of a military date-time group   
+**\<MsgOriginalDTG>** - If the message is a reply, forward or acknowledgment, inserts the date-time of the original message in the format of a military date-time group   
 Ex: 241205Z NOV 2014
 
-**<MsgOriginalSize>** - If the message is a reply, forward or acknowledgment, inserts the size of the original message.  
-Ex: <MsgOriginalSize>
+**\<MsgOriginalSize>** - If the message is a reply, forward or acknowledgment, inserts the size of the original message.  
+Ex:\<MsgOriginalSize>
 
-**<MsgOriginalAttachmentCount>** - If the message is a reply, forward or acknowledgment, inserts a count of the number of attachments the original message had.  
-Ex: <MsgOriginalAttachmentCount>
+**\<MsgOriginalAttachmentCount>** - If the message is a reply, forward or acknowledgment, inserts a count of the number of attachments the original message had.  
+Ex:\<MsgOriginalAttachmentCount>
 
-**<MsgOriginalXML>** - If the message being composed is a reply, forward or acknowledgment to a message that was sent with a form attachment, this tag inserts the XML code with the form data that was attached to the original message.  If this is a new message, it inserts nothing.  
-Ex: <MsgOriginalXML>
+**\<MsgOriginalXML>** - If the message being composed is a reply, forward or acknowledgment to a message that was sent with a form attachment, this tag inserts the XML code with the form data that was attached to the original message.  If this is a new message, it inserts nothing.  
+Ex:\<MsgOriginalXML>
 
 <Var variable> - Inserts the value assigned to a variable by a "Def:" statement (see above).  
-Ex: <var statecode>
+Ex:\<var statecode>
 
-**<Select prompt,item1[=value1],item2[=value2],...>** - Displays the prompt string and a drop-down selection list of the items.  If an item is followed by an equal sign and another string, then the value after the equal sign is returned as the value when the item is selected.  If there is no equal sign after an item, then the item text is returned for the selection.  If you want to use a comma in a value string, enclose the value with quote marks.  
-	    Ex: <select What type of operator are you:,Ham,MARS>  
-	          <select Which state do you live in:,Alabama=AL,Georgia=GA,Tennessee=TN>  
+**\<Select prompt,item1[=value1],item2[=value2],...>** - Displays the prompt string and a drop-down selection list of the items.  If an item is followed by an equal sign and another string, then the value after the equal sign is returned as the value when the item is selected.  If there is no equal sign after an item, then the item text is returned for the selection.  If you want to use a comma in a value string, enclose the value with quote marks.  
+	    Ex:\<select What type of operator are you:,Ham,MARS>  
+	         \<select Which state do you live in:,Alabama=AL,Georgia=GA,Tennessee=TN>  
 
-**<Ask prompt,options>** - Prompts the user to enter the value that will be inserted into the form.  Prompt is the string to display to prompt for the field.  Options are parameters affecting the input.  If options are specified, separate them from the prompt string with a comma, and use commas to separate multiple options.  Note, since comma is used to terminate the prompt string, you cannot used a comma within a prompt string.  You can spell out the full option keywords, but only the first two characters are significant.  If you want to use a comma in the prompt string, enclose the prompt with quote marks.
+**\<Ask prompt,options>** - Prompts the user to enter the value that will be inserted into the form.  Prompt is the string to display to prompt for the field.  Options are parameters affecting the input.  If options are specified, separate them from the prompt string with a comma, and use commas to separate multiple options.  Note, since comma is used to terminate the prompt string, you cannot used a comma within a prompt string.  You can spell out the full option keywords, but only the first two characters are significant.  If you want to use a comma in the prompt string, enclose the prompt with quote marks.
 
 The following options may be used:  
 UPPERCASE - Force input for the field to be upper-case characters.  Typically this us used to accept Call signs.  
 MULTILINE - Accept a multi-line, free-form text field.  If this isn't specified, a single-line field is accepted.  
 
-Ex: <Ask Your callsign:,UP>  
-Ex: <Ask "Name, Position">  
-Ex: <Ask Time of incident (hh:mm UTC):>  
+Ex:\<Ask Your callsign:,UP>  
+Ex:\<Ask "Name, Position">  
+Ex:\<Ask Time of incident (hh:mm UTC):>  
 Ex: Ask Description of incident:,MU>
 
 Here's an example of a template using ask fields:
@@ -196,8 +196,8 @@ CC:
 Subj: //WL2K R/AFTER ACTION REPORT TN  
 Msg:
 
-Callsign: <ask Your callsign:,UP>  
-Time: <ask Time (hh:mm UTC):>  
+Callsign:\<ask Your callsign:,UP>  
+Time:\<ask Time (hh:mm UTC):>  
 Description:  
 <ask Description of event:,mu>
 
@@ -224,20 +224,20 @@ Here is a sample template file:
 `Type:Winlink  
 To:user1@mymail.net;user3@mymail.com  
 CC:user2@mymail.net   
-Subj:Test template on <UDateTime>  
+Subj:Test template on\<UDateTime>  
 Msg:Display tags  
 
-DateTime     : <DateTime>  
-UTC DateTime : <UDateTime>  
-Date         : <Date>  
-UTC Date     : <UDate>  
-Time         : <Time>  
-UTC Time     : <UTime>  
-Day          : <Day>  
-UTC Day      : <UDay>  
-GPS Location : <GPS>  
-Position     : <Position>  
-Callsign     : <Callsign> ` 
+DateTime     :\<DateTime>  
+UTC DateTime :\<UDateTime>  
+Date         :\<Date>  
+UTC Date     :\<UDate>  
+Time         :\<Time>  
+UTC Time     :\<UTime>  
+Day          :\<Day>  
+UTC Day      :\<UDay>  
+GPS Location :\<GPS>  
+Position     :\<Position>  
+Callsign     :\<Callsign> ` 
 
 
 After applying this template, the message form would look like this:
@@ -279,7 +279,7 @@ To control various template settings, click "Messages" on the main menu bar foll
 
 Template Sequence Number
 
-Winlink Express provides a sequence number that can be incremented and inserted in templates and forms by using the <SeqNum> template insertion tag.  Specify on this screen the initial sequence number and the number of digits you want in the inserted value.  Note: If you use the "SeqInc:" template command in your template, it will increment the sequence number before it is inserted.  So, if you want the first inserted sequence number to be 1, set the initial value on this screen to 0.
+Winlink Express provides a sequence number that can be incremented and inserted in templates and forms by using the\<SeqNum> template insertion tag.  Specify on this screen the initial sequence number and the number of digits you want in the inserted value.  Note: If you use the "SeqInc:" template command in your template, it will increment the sequence number before it is inserted.  So, if you want the first inserted sequence number to be 1, set the initial value on this screen to 0.
 
 You also can specify the number of digits you want displayed when the sequence number is inserted.  If the formatted value is shorter than the specified size, it is padded with leading zeros to reach the specified number of digits.
 
@@ -302,6 +302,7 @@ W4PHS
 [end of template]`
 
 This template begins with "Msg:" which signals that the following lines go in the body of the message.  A blank line is inserted followed by a name and callsign.  The "Msg:" line is not included in the message body, so each message will be initialized with a single blank line followed by the signature lines.
+
 
 
 
