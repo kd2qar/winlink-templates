@@ -1,0 +1,16 @@
+From: <Callsign>
+To: nts:04543@ntsme 
+Source: <Callsign>
+Location: <GPS>
+Subject: DAMARISCOTTA KY2D
+Msg:
+NR <ASK "Message Number:"> R KD2QAR 10 SWANTON MD OCT 2
+JIM  KUTCH KY2D
+PO BOX 159
+DAMARISCOTTA ME 04543
+EMAIL JIM ATSIGN KY2D DOT COM
+BT
+<Select "Month reporting:", January=JAN, February=FEB, March=MAR, April=APR, May=MAY, June=JUN,  July=JUL, August=AUG, September=SEP, October=OCT, November=NOV, December=DEC> REPORT X MESSAGES INCOMMING
+<Ask "Incomming Message Count:"> OUTGOING <Ask "Outgoing Message Count:" > X 73
+BT
+MARK KD2QAR
