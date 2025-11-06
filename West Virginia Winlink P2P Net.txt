@@ -1,0 +1,8 @@
+Type: P2P
+To: WV8MT
+Subject: West Virginia Winlink Net
+Location: <Position>
+Readonly: Yes
+
+Msg:
+<Callsign>, Mark, Swanton, Garrett, MD (VARA P2P)

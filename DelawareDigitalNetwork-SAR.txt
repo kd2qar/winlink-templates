@@ -1,16 +1,37 @@
+form: DelawareDigitalNetwork-SAR.html
+Def: messageNumber=14
+Def: messageDate=NOV 1
+Def: incomming=0
+Def: outgoing=0
+Def: total=0
+Def: name=JIM KUTCH
+Def: call=KY2D
+Def: zipcode=04543
+Def: state=ME
+Def: city=DAMARISCOTTA
+Def: address=PO BOX 159
+Def: myCity=SWANTON
+Def: myState=MD
+Def: phone=
+Def: email=EMAIL JIM ATSIGN KY2D DOT COM
+Def: sendto=nts:04543@ntsme
 From: <Callsign>
-To: nts:04543@ntsme 
+To: <var sendto> 
 Source: <Callsign>
 Location: <GPS>
-Subject: DAMARISCOTTA KY2D
+Subject: <var city> <var call>
+
+
 Msg:
-NR <ASK "Message Number:"> R KD2QAR 10 SWANTON MD OCT 2
-JIM  KUTCH KY2D
-PO BOX 159
-DAMARISCOTTA ME 04543
-EMAIL JIM ATSIGN KY2D DOT COM
+NR <var messageNumber> R <CALLSIGN> 11 <var myCity> <var myState> <var messageDate>
+<var name> <var call>
+<var address>
+<var city> <var state> <var zipcode>
+<var phone>
+<var email>
 BT
-<Select "Month reporting:", January=JAN, February=FEB, March=MAR, April=APR, May=MAY, June=JUN,  July=JUL, August=AUG, September=SEP, October=OCT, November=NOV, December=DEC> REPORT X MESSAGES INCOMMING
-<Ask "Incomming Message Count:"> OUTGOING <Ask "Outgoing Message Count:" > X 73
+SAR <var SARMonth> <var SARYear> RCVD <var incomming>
+SENT <var outgoing> TOTAL <var total> X
+73
 BT
 MARK KD2QAR

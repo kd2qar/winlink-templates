@@ -1,10 +1,10 @@
 <head>
-<link href="{FormFolder}MDC_EMCOMM_Target_Station.css" rel="stylesheet" type="text/css" />
-<title>MDC EMMCOM Target Station Schedule</title>
-<style type="text/css" rel="stylesheet">
+<title>Delaware Digital Network SAR</title>
+<style type="text/css">
 .form-container {
  border: 1px solid #f2e3d2;
- background: #c9b7a2;
+ /*background: #c9b7a2;*/
+ background: #a2c4c9;
  background: -webkit-gradient(linear, left top, left bottom, from(#f2e3d2), to(#c9b7a2));
  background: -webkit-linear-gradient(top, #f2e3d2, #c9b7a2);
  background: -moz-linear-gradient(top, #f2e3d2, #c9b7a2);
@@ -106,20 +106,34 @@
  background: -o-linear-gradient(top, #6aa436, #8dc059);
  background-image: -ms-linear-gradient(top, #6aa436 0%, #8dc059 100%);
  color: #fff;
- }    
+ }
+ input[type=text], select {
+    width: 15em;
+     }
 </style>
 <script language="javascript" type="text/javascript">
 
-    	function getit() {
-
-	var storedValue = localStorage.getItem("Day1");
-    document.forms[0].Day1.value = storedValue;
-    var storedValue = localStorage.getItem("Day2");
-    document.forms[0].Day2.value = storedValue;
-    var storedValue = localStorage.getItem("Day3");
-    document.forms[0].Day3.value = storedValue;
-    var storedValue = localStorage.getItem("Day4");
-    document.forms[0].Day4.value = storedValue;
+    function getit() {
+        var num = 0;
+	    var storedValue = localStorage.getItem("messageNumber");
+        if (storedValue != null) num = parseInt(storedValue);
+        
+        num += 2;
+        document.forms[0].messageNumber.value = num;
+        /*
+        var storedValue = localStorage.getItem("SARYear");
+        document.forms[0].SARYear.value = storedValue;
+        var storedValue = localStorage.getItem("SARMonth");
+        document.forms[0].SARMonth.value = storedValue;
+        var storedValue = localStorage.getItem("Day4");
+        document.forms[0].Day4.value = storedValue;
+        */
+        }
+    function saveit() {
+        //messageNumber = document.getElementById("messageNumber").value;
+        
+        var messageNumber=document.forms[0].messageNumber.value;
+        localStorage.setItem("messageNumber",messageNumber);
         }
     function show(shown, hidden) 
     {
@@ -131,34 +145,55 @@
 function initialize(){
     // Reasonable guess for date of exercise
     var d = new Date();
-    thisyear = d.getFullYear();
-    thismonth=d.getMonth();
-    thisday=d.getDate();
-    thisdow=d.getDay();
+    var thisyear = d.getFullYear();
+    var thismonth=d.getMonth();
+    var thisday=d.getDate();
+    var thisdow=d.getDay();
+    var lastyear = thisyear;
+    var lastmonth = thismonth;
 
-    if (thisday>7){
-        if (thismonth>11){
-            thisyear+=1;
-            thismonth=1;
-        }
-        else
-            thismonth+=1;
+    if (thismonth < 1){
+        lastyear=thisyear-1;
+        lastmonth=11;
     }
+    else {
+        lastyear = thisyear;
+        lastmonth = thismonth-1;
+    }
+    
+    document.getElementById("SARYear").value = lastyear;
     var form = document.forms[0]; 
-    form.ExYear.value=thisyear;
-    form.ExMonth.value = shortmonth(thismonth);
-    form.Day1.value=thismonth;
-    var o = findFirstThursday(thisyear,thismonth);
-    form.Day1.value = o;
-    form.Day2.value = o+1;
-    form.Day3.value = o+2;
-    form.Day4.value = o+3;
+    form = document.getElementById("dtssarform");
+    form.SARYear.value=lastyear;
+    form.SARMonth.value = shortmonth(lastmonth);
+    form.messageDate.value = `${shortmonth(thismonth)} ${thisday}`;
+    form.incomming.value=0;
+    form.outgoing.value=0;
+    //form.total.value=91;
+    //form.Day1.value=thismonth;
+    //var o = findFirstThursday(thisyear,thismonth);
+    //form.Day1.value = o;
+    //form.Day2.value = o+1;
+    //form.Day3.value = o+2;
+    //form.Day4.value = o+3;
 }
+
 function shortmonth(monthnum) {
     var monthname;
     shortmonths = ["JAN", "FEB", "MAR","APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"] ;
     monthname = shortmonths [monthnum];
     return monthname; 
+}
+function lastMonthShort(){
+    var d = new Date();
+    var m = d.getMonth();
+    if (d ==0) d = 11;
+    else m--;
+    return shortmonth(m);
+}
+function thisMonthShort(){
+    var d = new Date();
+    return shortMonth(d.getMonth());
 }
 function findFirstThursday(year,month)
 {
@@ -192,29 +227,46 @@ function TimeNow(Timefld, doprompt) {
     window.onload=function(){
         getit();
         initialize();
-    }    
+    }   
+   
+function calcTotal(){
+    out = document.getElementById("outgoing").value;
+    inc =document.getElementById("incomming").value;
+    
+    var total = parseInt(out)+parseInt(inc);
+    document.getElementById("total").value = total;
+} 
 </script>
 </head>
-<h1><font color='maroon' >MDC EMCOMM Digital Exercise</font></h1>
-<form class="form-container" id='TargetStationSched' method='post' action='http://{FormServer}:{FormPort}' enctype='multipart/form-data'>
-<div class="form-title"><h2>Target Station Schedule</h2></div>
-<div class="form-title">Send report to:</div>
-<input type="text" name="address" value='{var address}' >
+<h1><font color='maroon' >Digital Station Activity Report</font></h1>
+<form class="form-container" id='dtssarform' method='post' action='http://{FormServer}:{FormPort}' onsubmit="javascript:saveit();" enctype='multipart/form-data'>
+<div class="form-title"><h2>DTS</h2></div>
+<table><tr><td>Message Number</td><td>My Call</td><td>My City</td><td>My State</td><td>Message Date</td></tr>
+       <tr><td><input type="number" min=1 max=999 name="messageNumber" id="messageNumber" value='{var messageNumber}'  ></td>
+        <td><input type='text' name='Callsign' maxlength="15" value='{Callsign}' style="width: 10em;"></td>
+        <td><input type='text' name='myCity' value='{var myCity}'></td>
+        <td><input type='text' name='myState' value='{var myState}' style="width: 4em;"></td>
+        <td><input type="text" name="messageDate" id="messageDate" readonly="Y" value="{var messageDate}"  style="width: 8em;"></td>
+    </tr>
+</table>
+<!--
+<div class="form-title">Message Number</div>
+
 <p>
-<div class="form-title">CC To:</div>
-<input type="text" name="ccstations" style="min-width:300px; width:580" value="{var ccstations}">
+<div class="form-title">Message Date (Month Day):</div>
+
 <p>
 <div class="form-title">Callsign</div>
-<input type='text' name='Callsign' value='{Callsign}'>
+
 <p>
-<div class="form-title">Exercise Dates</div>
+-->
 <!-- <input type='text' name='ExMonth' value='{ExMonth}'><br>
 <input type='text' name="FormFolder" value='{FormFolder}'> -->
 <div class="form-title">Year</div>
-<input type="number" name="ExYear" id="ExYear" >
+<input type="number" name="SARYear" id="SARYear" min="2025" max="9999" >
 <p>
-<div class="form-title">Month</div>
-<select id="ExMonth" name="ExMonth">
+<div class="form-title">SAR Month</div>
+<select id="SARMonth" name="SARMonth">
     <option value="JAN">January</option>
     <option value="FEB">February</option>
     <option value="MAR">March</option>
@@ -228,7 +280,15 @@ function TimeNow(Timefld, doprompt) {
     <option value="NOV">November</option>
     <option value="DEC">December</option>
 </select>
-<p>
+<p><div class="form-title">Messages Received:</div>
+<input onchange="calcTotal();" min="0" max="999" type="number" name="incomming" id="incomming" value="{var incomming}">
+</p>
+<p><div class="form-title">Messages Sent:</div>
+<input onchange="calcTotal();" min="0" max="999" type="number" name="outgoing" id="outgoing" value="{var outgoing}">
+</p>
+<p><div class="form-title">TOTAL:</div>
+<input min="0" max="999" type="number" name="total" id="total" value="{var total}"><p>
+    <!--
 <div class="form-title">Days</div>
 <table><tr ><th >Day 1</th><th>Day 2</th><th>Day 3</th><th>Day4</th></tr>
     <tr>
@@ -238,6 +298,7 @@ function TimeNow(Timefld, doprompt) {
         <td><input min="1" max="31" type="number" name="Day4" ></td>
     </tr>
 </table>
+-->
 <p>
 <input type='submit' name='Submit' value='Submit' method='Post' enctype='multipart/form-data' />
 </p>
