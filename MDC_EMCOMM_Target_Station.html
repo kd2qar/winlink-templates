@@ -1,5 +1,5 @@
 <head>
-<link href="{FormFolder}MDC_EMCOMM_Target_Station.css" rel="stylesheet" type="text/css" />
+<!-- link href="{FormFolder}MDC_EMCOMM_Target_Station.css" rel="stylesheet" type="text/css" / -->
 <title>MDC EMMCOM Target Station Schedule</title>
 <style type="text/css" rel="stylesheet">
 .form-container {
@@ -110,31 +110,28 @@
 </style>
 <script language="javascript" type="text/javascript">
 
-    	function getit() {
-
-	var storedValue = localStorage.getItem("Day1");
+function getit() {
+    let storedValue = localStorage.getItem("Day1");
     document.forms[0].Day1.value = storedValue;
-    var storedValue = localStorage.getItem("Day2");
+    storedValue = localStorage.getItem("Day2");
     document.forms[0].Day2.value = storedValue;
-    var storedValue = localStorage.getItem("Day3");
+    storedValue = localStorage.getItem("Day3");
     document.forms[0].Day3.value = storedValue;
-    var storedValue = localStorage.getItem("Day4");
+    storedValue = localStorage.getItem("Day4");
     document.forms[0].Day4.value = storedValue;
-        }
-    function show(shown, hidden) 
-    {
-        document.getElementById(shown).style.display='block'; 
-        document.getElementById(hidden).style.display='none'; 
-
-        return false;
+     }
+function show(shown, hidden)  {
+    document.getElementById(shown).style.display='block'; 
+    document.getElementById(hidden).style.display='none'; 
+    return false;
     }
 function initialize(){
     // Reasonable guess for date of exercise
-    var d = new Date();
-    thisyear = d.getFullYear();
-    thismonth=d.getMonth();
-    thisday=d.getDate();
-    thisdow=d.getDay();
+    let d = new Date();
+    let thisyear = d.getFullYear();
+    let thismonth=d.getMonth();
+    let thisday=d.getDate();
+    let thisdow=d.getDay();
 
     if (thisday>7){
         if (thismonth>11){
@@ -144,31 +141,71 @@ function initialize(){
         else
             thismonth+=1;
     }
-    var form = document.forms[0]; 
+    let form = document.forms[0]; 
     form.ExYear.value=thisyear;
     form.ExMonth.value = shortmonth(thismonth);
     form.Day1.value=thismonth;
-    var o = findFirstThursday(thisyear,thismonth);
+    //let o = findFirstThursday(thisyear,thismonth);
+    let o = findFirstThursdayAfterFirstTuesday(thisyear,thismonth);
     form.Day1.value = o;
     form.Day2.value = o+1;
     form.Day3.value = o+2;
     form.Day4.value = o+3;
 }
 function shortmonth(monthnum) {
-    var monthname;
-    shortmonths = ["JAN", "FEB", "MAR","APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"] ;
-    monthname = shortmonths [monthnum];
+    let shortmonths = ["JAN", "FEB", "MAR","APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"] ;
+    let monthname = shortmonths [monthnum];
     return monthname; 
 }
 function findFirstThursday(year,month)
 {
-    for(i=1;i<=7;i++){
-        d = new Date(year,month,i);
+    for(let i=1;i<=7;i++){
+        let d = new Date(year,month,i);
         if (d.getDay() == 4)
             return i;
     }
     return 99;
 }
+function findFirstTuesday(year,month)
+{
+    for(let i=1;i<=7;i++){
+        let d = new Date(year,month,i);
+        if (d.getDay() == 2)
+            return i;
+    }
+    return 99;
+}
+function findFirstFriday(year,month)
+{
+    for(let i=1;i<=7;i++){
+        let d = new Date(year,month,i);
+        if (d.getDay() == 5)
+            return i;
+    }
+    return 99;
+}
+function findFirstTuesdayAfterFirstFriday(year,month)
+{
+    let fri = findFirstFriday(year,month);
+    return fri + 4;
+}
+function findFirstThursdayAfterFirstFriday(year,month)
+{
+    let fri = findFirstFriday(year,month);
+    return fri + 6;
+}
+function findFirstThursdayAfterFirstTuesday(year,month)
+{
+    // Challenges are conducted on the Thursday through Sunday preceding the second Tuesday of each month, except in October which is reserved for ARRL SET activities. (The second Tuesdays are MDC Digital Check-ins.)
+    let tues = findFirstTuesday(year,month);
+    return tues +2;
+}
+function findSecondTuesday(year,month)
+{
+    let first = findFirstTuesday(year,month);
+    return first + 7;
+}
+
 function TimeNow(Timefld, doprompt) {
     var txt;
     var d = new Date();
