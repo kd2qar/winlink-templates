@@ -1,49 +1,34 @@
 Type: Winlink
 Form: MDC_EMCOMM_Target_Station.html
 Def: address=MDCWINLINK-1
-Def: ccstations=AC3EW; N3HU; KB3SPH; NS3X; KN3U; N3WOF; K3JSJ; KG4K; WX3F;
+Def: ccstations=AC3EW; K3JSJ; KB3SPH; KG4K; KN3U; N3HU; N3WOF; NS3X
 
 To: <var address>
 Cc: <var ccstations>
-Subject:<var Callsign> - <var Day1>-<var Day2> <var ExMonth> <var ExYear> MDC DIGITAL EMCOMM CHALLENGE SCHED
+Subject:<Callsign> - <var Day1>-<var Day2> <var ExMonth> <var ExYear> MDC DIGITAL EMCOMM CHALLENGE SCHED
 Location: <Position>
 Readonly: No
 Msg:
-My Operating Frequencies and Schedule: KD2QAR
-TARGET STATION <CALLSIGN> - <var ExMonth> <var ExYear> MDC Digital EMCOMM Challenge
+My Operating Frequencies and Schedule: <Callsign>
+TARGET STATION <Callsign> - <var ExMonth> <var ExYear> MDC Digital EMCOMM Challenge
 
 FLDIGI
-Fldigi HF Target Station Callsign: <var CALLSIGN>
+Fldigi HF Target Station Callsign: <Callsign>
 Mode of Operation: MFSK32
-Dial frequency:  80M, 3.582.000 MHz
-Dates/Hours of operation: Friday <var ExMonth> <var Day2> 1900-2100 ET
+Dial frequency: 80M, 3.582.000 MHz
+Dates/Hours of operation: <var Day2> <var ExMonth> 1900-2100 ET
 
-
-WINLINK
-Winlink HF Target Station Callsign:    KD2QAR
-Mode of Operation: Vara HF P2P  - (500 or 2300 Hz BW)
-Dial frequency: 80M, 3.589.500 MHz
-Dates/Hours of operation: Thu <var ExMonth> <var Day1>, 0000-0600
-
-Winlink HF Target Station Callsign:    KD2QAR
-Mode of Operation: Vara HF P2P  - (500 or 2300 Hz BW)
-Dial frequency: 30M, 10.142.500 MHz
-Dates/Hours of operation: Thu <var ExMonth> <var Day1>,  0800-1700   ET
-
-Winlink HF Target Station Callsign:    KD2QAR
-Mode of Operation: Vara HF P2P  - (500 or 2300 Hz BW)
-Dial frequency: 80M, 3.589.500 MHz
-Dates/Hours of operation: Thu <var ExMonth> <var Day1> 2000-2400 ET - Fri <var ExMonth> <var Day2>, 0000-0600  
-
-Winlink HF Target Station Callsign:    KD2QAR
-Mode of Operation: Vara HF P2P  - (500 or 2300 Hz BW)
-Dial frequency: 40M, 7.085.000 MHz
-Dates/Hours of operation: Fri <var ExMonth> <var Day2>,  0800-1700   ET
+Winlink HF Target Station Callsign: <Callsign>
+Mode of Operation: Vara HF P2P (500 or 2300 Hz BW)
+Dial frequency: 30M, 10.142.500 MHz, Operations: <var Day1> <var ExMonth>, 0800-1700 ET
+Dial frequency: 40M, 7.085.000 MHz, Operations: <var Day2> <var ExMonth>, 0800-1700 ET
+Dial frequency: 80M, 3.589.500 MHz, Operations: <var Day1> <var ExMonth> 0000-0600 ET, <var Day1> <var ExMonth> 2000 - <var Day2> <var ExMonth> 0600 ET
 
 VarAC
-VarAC HF Target Station Callsign:    KD2QAR
+VarAC HF Target Station Callsign: <Callsign>
 Mode of Operation: ADVANCED AWAY
-Dates of operation: <var ExMonth> <var Day3>-<var Day4>
+Bands: 80M, 40M, 30M
+Dates of operation: <var Day3>-<var Day4> <var ExMonth>
 
 ** NOTE **
-** Generated using Winlink template located at: https://github.com/kd2qar/winlink-templates/ **
+** Generated using Winlink template available at: https://github.com/kd2qar/winlink-templates/ **
