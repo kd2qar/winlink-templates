@@ -1,0 +1,600 @@
+<head>
+<title>Digital Traffic Network Message</title>
+<style type="text/css">
+.form-container {
+ border: 1px solid #f2e3d2;
+ /*background: #c9b7a2;*/
+ background: #a2c4c9;
+ background: -webkit-gradient(linear, left top, left bottom, from(#f2e3d2), to(#c9b7a2));
+ background: -webkit-linear-gradient(top, #f2e3d2, #c9b7a2);
+ background: -moz-linear-gradient(top, #f2e3d2, #c9b7a2);
+ background: -ms-linear-gradient(top, #f2e3d2, #c9b7a2);
+ background: -o-linear-gradient(top, #f2e3d2, #c9b7a2);
+ background-image: -ms-linear-gradient(top, #f2e3d2 0%, #c9b7a2 100%);
+ -webkit-border-radius: 8px;
+ -moz-border-radius: 8px;
+ border-radius: 8px;
+ -webkit-box-shadow: rgba(000,000,000,0.9) 0 1px 2px, inset rgba(255,255,255,0.4) 0 0px 0;
+ -moz-box-shadow: rgba(000,000,000,0.9) 0 1px 2px, inset rgba(255,255,255,0.4) 0 0px 0;
+
+ box-shadow: rgba(000,000,000,0.9) 0 1px 2px, inset rgba(255,255,255,0.4) 0 0px 0;
+ font-family: 'Helvetica Neue',Helvetica,sans-serif;
+ text-decoration: none;
+ vertical-align: middle;
+ min-width:300px;
+ padding:20px;
+ width:600px;
+ }
+.form-field {
+ border: 1px solid #c9b7a2;
+ background: #e4d5c3;
+ -webkit-border-radius: 4px;
+ -moz-border-radius: 4px;
+ border-radius: 4px;
+ color: #c9b7a2;
+ -webkit-box-shadow: rgba(255,255,255,0.4) 0 1px 0, inset rgba(000,000,000,0.7) 0 0px 0px;
+ -moz-box-shadow: rgba(255,255,255,0.4) 0 1px 0, inset rgba(000,000,000,0.7) 0 0px 0px;
+ box-shadow: rgba(255,255,255,0.4) 0 1px 0, inset rgba(000,000,000,0.7) 0 0px 0px;
+ padding:8px;
+ margin-bottom:20px;
+ width:auto;
+ }
+.form-field:focus {
+ background: #fff;
+ color: #725129;
+ }
+.form-container h2 {
+ text-shadow: #fdf2e4 0 1px 0;
+ font-size:18px;
+ margin: 0 0 10px 0;
+ font-weight:bold;
+ text-align:center;
+ }
+.form-title {
+ margin-bottom:10px;
+ color: #725129;
+ text-shadow: #fdf2e4 0 1px 0;
+ }
+.submit-container {
+ margin:8px 0;
+ text-align:right;
+ }
+.submit-button {
+ border: 1px solid #447314;
+ background: #6aa436;
+ background: -webkit-gradient(linear, left top, left bottom, from(#8dc059), to(#6aa436));
+ background: -webkit-linear-gradient(top, #8dc059, #6aa436);
+ background: -moz-linear-gradient(top, #8dc059, #6aa436);
+ background: -ms-linear-gradient(top, #8dc059, #6aa436);
+ background: -o-linear-gradient(top, #8dc059, #6aa436);
+ background-image: -ms-linear-gradient(top, #8dc059 0%, #6aa436 100%);
+ -webkit-border-radius: 4px;
+ -moz-border-radius: 4px;
+ border-radius: 4px;
+ -webkit-box-shadow: rgba(255,255,255,0.4) 0 1px 0, inset rgba(255,255,255,0.4) 0 1px 0;
+ -moz-box-shadow: rgba(255,255,255,0.4) 0 1px 0, inset rgba(255,255,255,0.4) 0 1px 0;
+ box-shadow: rgba(255,255,255,0.4) 0 1px 0, inset rgba(255,255,255,0.4) 0 1px 0;
+ text-shadow: #addc7e 0 1px 0;
+ color: #31540c;
+ font-family: helvetica, serif;
+ padding: 8.5px 18px;
+ font-size: 14px;
+ text-decoration: none;
+ vertical-align: middle;
+ }
+.submit-button:hover {
+ border: 1px solid #447314;
+ text-shadow: #31540c 0 1px 0;
+ background: #6aa436;
+ background: -webkit-gradient(linear, left top, left bottom, from(#8dc059), to(#6aa436));
+ background: -webkit-linear-gradient(top, #8dc059, #6aa436);
+ background: -moz-linear-gradient(top, #8dc059, #6aa436);
+ background: -ms-linear-gradient(top, #8dc059, #6aa436);
+ background: -o-linear-gradient(top, #8dc059, #6aa436);
+ background-image: -ms-linear-gradient(top, #8dc059 0%, #6aa436 100%);
+
+ color: #fff;
+ }
+.submit-button:active {
+ text-shadow: #31540c 0 1px 0;
+ border: 1px solid #447314;
+ background: #8dc059;
+ background: -webkit-gradient(linear, left top, left bottom, from(#6aa436), to(#6aa436));
+ background: -webkit-linear-gradient(top, #6aa436, #8dc059);
+ background: -moz-linear-gradient(top, #6aa436, #8dc059);
+ background: -ms-linear-gradient(top, #6aa436, #8dc059);
+ background: -o-linear-gradient(top, #6aa436, #8dc059);
+ background-image: -ms-linear-gradient(top, #6aa436 0%, #8dc059 100%);
+ color: #fff;
+ }
+ input[type=text], select {
+    width: 15em;
+     }
+
+.zentriert { text-align: center; }  
+
+</style>
+<script language="javascript" type="text/javascript">
+var mydir;
+var TimeLocal;  
+var TimeUTC;
+var thewordcnt;  
+
+function getit() {
+        let num = 0;
+	    let storedValue = localStorage.getItem("messageNumber");
+        if (storedValue != null) num = parseInt(storedValue);
+
+        num += 2;
+        document.forms[0].messageNumber.value = num;
+
+        storedValue = localStorage.getItem("mycity");
+        document.getElementById("myCity").value = storedValue;
+        
+        storedValue = localStorage.getItem("mystate");
+        document.getElementById("myState").value = storedValue;
+        
+        storedValue = localStorage.getItem("signature");
+        document.getElementById("signature").value = storedValue;
+        /*
+        var storedValue = localStorage.getItem("SARYear");
+        document.forms[0].SARYear.value = storedValue;
+        var storedValue = localStorage.getItem("SARMonth");
+        document.forms[0].SARMonth.value = storedValue;
+        var storedValue = localStorage.getItem("Day4");
+        document.forms[0].Day4.value = storedValue;
+        */
+        }
+function saveit() {
+        //messageNumber = document.getElementById("messageNumber").value;
+        
+        let messageNumber=document.forms[0].messageNumber.value;
+        localStorage.setItem("messageNumber",messageNumber);
+        let storeValue = document.getElementById("myCity").value;
+        localStorage.setItem("mycity",storeValue);
+        storeValue = document.getElementById("myState").value;
+        localStorage.setItem("mystate",storeValue);
+        storeValue = document.getElementById("signature").value;
+        localStorage.setItem("signature",storeValue);
+
+        }
+function show(shown, hidden) {
+        document.getElementById(shown).style.display='block'; 
+        document.getElementById(hidden).style.display='none'; 
+
+        return false;
+    }
+function initialize(){
+    // Reasonable guess for date of exercise
+    var d = new Date();
+    var thisyear = d.getFullYear();
+    var thismonth=d.getMonth();
+    var thisday=d.getDate();
+    var thisdow=d.getDay();
+    var lastyear = thisyear;
+    var lastmonth = thismonth;
+
+    if (thismonth < 1){
+        lastyear=thisyear-1;
+        lastmonth=11;
+    }
+    else {
+        lastyear = thisyear;
+        lastmonth = thismonth-1;
+    }
+    
+    //document.getElementById("SARYear").value = lastyear;
+    let form = document.forms[0]; 
+    form = document.getElementById("dtnform");
+    //form.SARYear.value=lastyear;
+    //form.SARMonth.value = shortmonth(lastmonth);
+    form.messageDate.value = `${shortmonth(thismonth)} ${thisday}`;
+    //form.incomming.value=0;
+    //form.outgoing.value=0;
+    //form.total.value=91;
+    //form.Day1.value=thismonth;
+    //var o = findFirstThursday(thisyear,thismonth);
+    //form.Day1.value = o;
+    //form.Day2.value = o+1;
+    //form.Day3.value = o+2;
+    //form.Day4.value = o+3;
+}
+
+function shortmonth(monthnum) {
+    let shortmonths = ["JAN", "FEB", "MAR","APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"] ;
+    let monthname = shortmonths [monthnum];
+    return monthname; 
+}
+function lastMonthShort(){
+    let d = new Date();
+    let m = d.getMonth();
+    if (d ==0) d = 11;
+    else m--;
+    return shortmonth(m);
+}
+function thisMonthShort(){
+    let d = new Date();
+    return shortMonth(d.getMonth());
+}
+function findFirstThursday(year,month)
+{
+    for(let i=1;i<=7;i++){
+        d = new Date(year,month,i);
+        if (d.getDay() == 4)
+            return i;
+    }
+    return 99;
+}
+function TimeNow(Timefld, doprompt) {
+    var txt;
+    var d = new Date();
+    thisyear = d.getFullYear();
+    thismonth= d.getMonth();
+    thismonth = thismonth+1;
+    if (thismonth < 10) { thismonth = "0"+thismonth};
+
+    thisday = d.getDate();
+    if (thisday < 10) { thisday = "0"+thisday};
+
+    h = (d.getHours()<10?'0':'') + d.getHours()
+    m = (d.getMinutes()<10?'0':'') + d.getMinutes()
+    s = (d.getSeconds()<10?'0':'') + d.getSeconds();
+    var myprompt = thisyear+ '-'+thismonth+'-'+thisday+' '+h + ':' + m+':'+s;
+    var RightNow = myprompt;
+    if (doprompt) {var RightNow = prompt("", myprompt);}
+    document.getElementById(Timefld).value = RightNow;
+    TimeStamp();
+    } 
+    window.onload=function(){
+        getit();
+        initialize();
+    }   
+
+function formatEmail(){
+    let emailtext = document.getElementById("email").value;
+    emailtest = fixemail(emailtext);
+     document.getElementById("email").value=emailtext;
+}
+function fixemail(MSGText,fieldid='email') {
+    let n = MSGText;  
+    if (fieldid == 'email') { 
+        n = n.replace(/(\r\n|\n|\r)/gm," ");  
+        }
+    n=n.replace(/\./gm, " DOT ");  
+    n=n.replace(/\@/gm, " ATSIGN ");  
+    n=n.replace(/\  /gm, " ");  
+    n=n.replace(/\//gm, " SLASH ");  
+    n=n.replace(/\_/gm, " UNDERSCORE ");
+    let field = document.getElementById(fieldid);
+    field.value = n;  
+    return(n);
+    }
+function RWS(str) {  
+    let text2 = str.replace(/\s+$/,"");
+    text2 = str.replace(/\.+$/,"");
+    text2=text2.replace(/\./gm, " X ");
+    return text2.trim();
+    }  
+function punctwrdcnt(s, fieldid) {
+    if (thewordcnt == 3)  return;   
+    wordcount(s);  
+    fixpunct(s, fieldid);  
+    }
+function punctsignature(s, field){
+    fixemail(s,field);
+}
+function wordcount(s) {
+    s = s.trim();  
+    s = s.replace(/(^\s*)|(\s*$)/gi,"");//exclude start and end white-space  
+    s = s.replace(/\n/g, " "); // Convert CR to spacing  
+    s = s.replace(/[ ]{2,}/gi," ");//2 or more space to 1  
+    var cnt = s.split(' ').length;
+    strhasnothing= s.length;  
+    if (strhasnothing == 0 ){cnt = 0; }
+    let arl = '';  
+    var thewordcnt = cnt; 
+    let elem = document.getElementById('WarningText');  
+    elem.style.background = '#FFFFFF';  
+    document.getElementById('WarningText').innerHTML = " ";    
+    if (cnt > 25) {// lert ("at 25 words"); #FFFF00  
+    // Stop you have reached 30 words  
+    elem.style.background = '#FFFFFF';  
+    document.getElementById('WarningText').innerHTML = " ";  
+    if (cnt >25 ){  
+        elem.style.background = '#ffffcc';  
+        document.getElementById('WarningText').innerHTML = "You have entered more than 25 groups.";  
+        }  
+    if (cnt >= 30){  
+        elem.style.background = '#ffcccc';  
+        document.getElementById('WarningText').innerHTML = "You have entered "+cnt+ " groups.";  
+        }
+    }
+    let rrc = "";  
+    let n = s.search(/RRC /i);  
+    let m = s.search(/ RRC /i);  
+    //arl
+    let narl = s.search(/ARL /i);  
+    let marl = s.search(/ ARL /i);  
+    // need to check that one less than n is not a letter --/  
+    if (n==0) {rrc = "RRC "};  
+    if (narl==0 && rrc == '') {rrc = "ARL "}; 
+    if (m>1 && rrc == '') {rrc = "RRC "}; // alert ( n +" " + m); --/  
+    if (marl>1 && rrc == '') {rrc = "ARL "};  
+    // TEST FOR BOTH
+    if (m>-1 && marl>-1){alert('pick 0ne)')}
+    let ele = document.getElementById('check');  
+    ele.value = rrc+cnt;  
+    let ele2 = document.getElementById('check2');  
+    ele2.value = rrc+cnt;  
+    }
+  
+
+function Strippunct(MSGText, fieldid) {
+    let n = MSGText;
+    n = n.replace(/(\r\n|\n|\r)/gm," ");  
+    n=n.replace(/\,/gm, "");  
+    n=n.replace(/\-/gm, "");  
+    n=n.replace(/\?/gm, "");  
+    n=n.replace(/\!/gm, "");
+    n=n.replace(/\:/gm, "");  
+    n=n.replace(/\@/gm, "");  
+    n=n.replace(/\"/gm, "");  
+    n=n.replace(/\\/gm, "");  
+    n=n.replace(/\+/gm, "");  
+    n=n.replace(/\;/gm, "");  
+    n=n.replace(/\~/gm, "");  
+    n=n.replace(/\_/gm, " UNDERSCORE ");  
+    n=n.replace(/\'/gm, "");  
+    n=n.replace(/\#/gm, "");  
+    n=n.replace(/\%/gm, "");  
+    n=n.replace(/\(/gm, "");  
+    n=n.replace(/\)/gm, "");  
+    n=n.replace(/\&/gm, "");  
+    n=n.replace(/\*/gm, "");  
+    n=n.replace(/\>/gm, " ");  
+    n=n.replace(/\</gm, "");  
+    n=n.replace(/\$/gm, "");  
+    n=n.replace(/\^/gm, "");  
+    n=n.replace(/\{/gm, "");  
+    n=n.replace(/\}/gm, "");  
+    n=n.replace(/\[/gm, "");  
+    n=n.replace(/\]/gm, "");  
+    n=n.replace(/\\/gm, "");  
+    n=n.replace(/\`/gm, "");  
+    n=n.replace(/\|/gm, "");  
+    n=n.replace(/\=/gm, "");  
+    n=n.replace(/\ /gm, " ");  
+    n = n.replace(/\s+/g, ' ');   
+    document.getElementById(fieldid).value = n;  
+    return(n);  
+    }  
+  
+function fixpunct(MSGText, fieldid) {  
+    n = MSGText;  
+    n = n.replace(/(\d)\.(\d)/gm,'$1'+"R"+'$2' );  
+    n = n.replace(/(\r\n|\n|\r)/gm," ");  
+    n = n.replace(/(\D)\.(\S)/gm,'$1'+" dot "+'$2');  
+    n = n.replace(/(\D)\.\s/gm,'$1'+" X ");	  
+    n=n.replace(/\,/gm, "");  
+    n=n.replace(/\-/gm, " DASH ");         
+    //test
+    n = n.replace(/DASH (\d)/gm,"M"+'$1' );  
+    // end test
+    n=n.replace(/\?/gm, " QUERY ");  
+    n=n.replace(/\!/gm, "");  
+    n=n.replace(/\:/gm, "");  
+    n=n.replace(/\@/gm, " ATSIGN ");  
+    n=n.replace(/\"/gm, "");  
+    n=n.replace(/\\/gm, " BACKSLASH ");  
+    n=n.replace(/\+/gm, "");  
+    n=n.replace(/\;/gm, "");  
+    n=n.replace(/\~/gm, "");  
+    n=n.replace(/\_/gm, " UNDERSCORE ");  
+    n=n.replace(/\'/gm, "");  
+    n=n.replace(/\#/gm, "");  
+    n=n.replace(/\%/gm, "");  
+    n=n.replace(/\(/gm, "");  
+    n=n.replace(/\)/gm, "");  
+    n=n.replace(/\&/gm, "");  
+    n=n.replace(/\*/gm, "");  
+    n=n.replace(/\>/gm, " ");  
+    n=n.replace(/\</gm, "");  
+    n=n.replace(/\$/gm, "");  
+    n=n.replace(/\^/gm, "");  
+    n=n.replace(/\{/gm, "");  
+    n=n.replace(/\}/gm, "");  
+    n=n.replace(/\[/gm, "");  
+    n=n.replace(/\]/gm, "");  
+    n=n.replace(/\\/gm, "");  
+    n=n.replace(/\`/gm, "");  
+    n=n.replace(/\|/gm, "");  
+    n=n.replace(/\=/gm, "");  
+    n=n.replace(/\ /gm, " ");  
+    n = n.replace(/\s+/g, ' ');   
+    document.getElementById(fieldid).value = n;  
+    return(n);  
+    }  
+  
+        
+function fixzip(MSGText,fieldid='zipcode') {  
+    let n = MSGText;  
+    n=n.replace(/\-/gm, " DASH ");  
+    n = n.replace(/(\r\n|\n|\r)/gm," ");
+    n=n.replace(/\  /gm, " ");  
+    document.getElementById(fieldid).value = n;    
+    return(n); 
+    }  
+function fixrows(fieldid){
+    let ThisText = document.getElementById(fieldid).value;
+    let makeit = Countthelines(ThisText);  
+    if (makeit > document.getElementById(fieldid).rows)
+        document.getElementById(fieldid).rows = makeit;  
+}
+function fixlines(fieldid) {  
+    let ThisText = document.getElementById(fieldid).value;
+    let makeit = Countthelines(ThisText);  
+    document.getElementById(fieldid).style.height = makeit+"px"; }  
+  
+function Fixarea() {  
+    fixlines("Comments");  
+    AutoGrowTextArea(document.getElementById("Comments"));  
+    }  
+   
+function calcTotal(){
+    let out = document.getElementById("outgoing").value;
+    let inc =document.getElementById("incomming").value;
+    
+    let total = parseInt(out)+parseInt(inc);
+    document.getElementById("total").value = total;
+    } 
+  
+function fix (fieldid='tformat') {  
+    if (document.getElementById(fieldid).checked) {
+        useUTC= document.getElementById(fieldid).value;
+        }
+    document.getElementById("Submitbutton").disabled = false;  
+    let String1 = document.getElementById('MessageText').value;
+    String1 = fixpunct(String1, 'MessageText');
+    String1= String1.trim();  
+    let answer = String1.slice(-2);       
+    if (answer== " X") {String1=String1.substring(0,String1.length - 2); }  
+    String1= String1.trim();
+    let rrc = "";
+    let n = String1.search(/RRC /i);  
+    let m = String1.search(/ RRC /i);  
+    // need to check that one less than n is not a letter --/
+    if (n==0) {rrc = "RRC "};  
+    if (m>1) {rrc = "RRC "}; 
+    let temp = String1.split(' ');  
+    let howmany = temp.length;  
+    document.getElementById('check2').value = document.getElementById('check').value   
+    let newstring = '';
+    for (i = 0; i < temp.length; i++) { newstring = newstring +temp[i] + addthis (i); }
+    newstring = newstring.toUpperCase();  
+    document.getElementById('messageText').value = newstring; return ;  
+    }  
+
+function fixseq(){
+    let sq = document.getElementById('NumberVal' ).value;  
+    //test
+    sq = sq.replace(/^0+/, '');
+    document.getElementById('NumberVal' ).value = sq;
+    }
+
+function updateDTNsendto(){
+    let zip = document.getElementById('zipcode').value.trim();
+    let state = document.getElementById('state').value.toLowerCase().trim();
+    document.getElementById('sendto').value = "nts:" + zip + "@nts" + state;
+}
+</script>
+</head>
+<h1><font color='maroon' >Digital Traffic Network Message</font></h1>
+<form class="form-container" id='dtnform' method='post' action='http://{FormServer}:{FormPort}' onsubmit="javascript:saveit();" enctype='multipart/form-data'>
+<div class="form-title"><h2>DTS</h2></div>
+<table><tr><td>Message Number</td><td>My Call</td><td>My City</td><td>My State</td><td>Message Date</td></tr>
+       <tr><td><input type="number" min=1 max=999 name="messageNumber" id="messageNumber" value='{var messageNumber}'  ></td>
+        <td><input type='text' name='Callsign' id="Callsign" maxlength="15" value='{Callsign}' style="width: 10em;" 
+                    style="text-transform: uppercase;" 
+                    onblur="javascript:this.value=this.value.toUpperCase();"></td>
+        <td><input type='text' name='myCity' id="myCity" placeholder="Origination City..." 
+                    style="text-transform: uppercase;"
+                    onblur="javascript:this.value=this.value.toUpperCase();"></td>
+        <td><input type='text' name='myState' id="myState" 
+                    style="width: 4em; text-transform: uppercase;"
+                    onblur="javascript:this.value=this.value.toUpperCase();"></td>
+        <td><input type="text" name="messageDate" id="messageDate" readonly="Y" value="{var messageDate}"  style="width: 8em;"></td>
+    </tr>
+</table>
+<!--
+<div class="form-title">Message Number</div>
+
+<p>
+<div class="form-title">Message Date (Month Day):</div>
+
+<p>
+<div class="form-title">Callsign</div>
+
+<p>
+-->
+<input type="text" hidden="true" name="sendto" id="sendto" >
+<p><div class="form-title">Name:
+<input type="text" name="name" id="name" >
+Callsign:
+<input min="0" name="call" id="call" onblur="javascript:this.value=this.value.toUpperCase();"></div><p>
+<p><div class="form-title">Address:
+<input min="0" name="address" id="address" onblur="javascript:this.value=this.value.toUpperCase();"></div><p>
+<p><div class="form-title">City:
+<input  type="text" name="city" id="city" onblur="javascript:this.value=this.value.toUpperCase();">
+State (2 char):
+<input style="width: 3em;"  name="state" id="state" onchange="updateDTNsendto();" onblur="javascript:this.value=this.value.toUpperCase();">
+Zip Code:
+<input style="width:6em;" type="number" name="zipcode" id="zipcode" onchange="updateDTNsendto();"></div></p>
+<p><div class="form-title">E-Mail:
+<input style="width: 40em" type="text" onchange="fixemail(this.value);" title= "Provide Email, phone number, or both. Without at least one delivery may not occur" 
+        onblur="this.value= this.value.toUpperCase();" 
+        name="email" id="email" ></div></p>
+<!--
+<input maxlength="65" name="Email" id="Email" size="75" 
+        title= "Provide Email, phone number, or both. Without at least one delivery may not occur" 
+        placeholder="NEED EMAIL, PHONE, OR BOTH TO ENSURE DELIVERY."  
+        onkeyup="fixpunct(this.value, this.id)" onchange="this.value=fixemail(this.value);" onblur="this.value=fixemail(this.value);this.value= this.value.toUpperCase();"/>
+-->
+<p><div class="form-title">MESSAGE TEXT: 
+    Check: 
+    <input style="width: 7em;" name="check2" id="check2" size="10" maxlength="9" class="zentriert" readonly="readonly" value="0" type="text" />
+    <input hidden="true" name="check" id="check" size="10" maxlength="9" class="zentriert" readonly="readonly" value="0" type="text" />
+    &nbsp; <strong><span id="WarningText">&nbsp;</span></strong><br />
+</div>
+<textarea name="messageText" id="messageText" rows="7" cols="80" 
+            style="text-transform: uppercase;" 
+            placeholder="Enter your message here maximum of 25 words for DTN traffic ..."
+            onkeyup="punctwrdcnt(this.value, this.id)" 
+            onchange="this.value=RWS(this.value);" 
+            onblur="javascript:fixemail(this.value,this.id);"
+            ></textarea>
+            <!-- onblur="javascript:fixemail(this.value,this.id);" -->
+            <!--  fixrows(this.id)" -->
+            <!--             required="required" -->
+<textarea title="Only punctuation converted to words are  ? @ - . _      The stroke sign / can be entered.  The rest can not." 
+            style="text-transform: uppercase;" cols="130" rows="7" 
+            id="MessageTXT" name="MessageTXT" 
+            placeholder="Suggestion is no more than 25 groups (words)" 
+            onkeyup="punctwrdcnt(this.value, this.id)" 
+            onchange="this.value=RWS(this.value); fix()"></textarea>
+<p>
+Signature (name) of person for whom message <span class="style1">originated</span>: &nbsp;&nbsp;
+<textarea name="signature" id="signature" rows="2" cols="80"
+        style="text-transform: uppercase;" 
+        placeholder="Person who originated this message" 
+        required="required"
+        onblur="javascript:punctsignature(this.value,this.id); this.value=this.value.toUpperCase();"
+        ></textarea>
+</p>
+<!--
+<textarea title="Only punctuation converted to words are  ? @ - . _      The stroke sign / can be entered.  The rest can not." 
+        style="text-transform: uppercase;" cols="130" 
+        id="MessageTXT" name="MessageTXT" rows="7" 
+        placeholder="Suggestion is no more than 25 groups (words)" required="required" 
+        onkeyup="punctwrdcnt(this.value, this.id)" 
+        onchange="this.value=RWS(this.value); fix()"></textarea>
+-->
+</p>
+    <!--
+<div class="form-title">Days</div>
+<table><tr ><th >Day 1</th><th>Day 2</th><th>Day 3</th><th>Day4</th></tr>
+    <tr>
+        <td><input min="1" max="31" type="number" name="Day1" ></td>
+        <td><input min="1" max="31" type="number" name="Day2" ></td>
+        <td><input min="1" max="31" type="number" name="Day3" ></td>
+        <td><input min="1" max="31" type="number" name="Day4" ></td>
+    </tr>
+</table>
+-->
+<p>
+<input type='submit' name='Submit' value='Submit' method='Post' enctype='multipart/form-data' />
+</p>
+<p>
+<input type='submit' name='Submit' value='Cancel' method='Post' enctype='multipart/form-data' />
+</p>
+</form>
+

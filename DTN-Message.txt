@@ -1,0 +1,36 @@
+form: DTN-Message.html
+Def: messageNumber=14
+Def: messageDate=NOV 1
+Def: incomming=0
+Def: outgoing=0
+Def: total=0
+Def: name=
+Def: call=
+Def: zipcode=
+Def: state=
+Def: city=
+Def: address=
+Def: myCity=
+Def: myState=
+Def: signature=
+Def: phone=
+Def: email=
+Def: check=0
+Def: sendto=nts:
+From: <Callsign>
+To: <var sendto> 
+Source: <Callsign>
+Location: <GPS>
+Subject: <var city> <var call>
+
+
+Msg:
+NR <var messageNumber> R <CALLSIGN> <var check> <var myCity> <var myState> <var messageDate>
+<var name> <var call>
+<var address>
+<var city> <var state> <var zipcode>
+<var email>
+BT
+<var messageText>
+BT
+<var signature>
