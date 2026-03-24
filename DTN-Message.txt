@@ -1,6 +1,6 @@
 form: DTN-Message.html
 Def: messageNumber=14
-Def: messageDate=JAN 1
+Def: messageDate=NOV 1
 Def: incomming=0
 Def: outgoing=0
 Def: total=0

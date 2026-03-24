@@ -114,8 +114,8 @@
 <script language="javascript" type="text/javascript">
 
     function getit() {
-        var num = 0;
-	    var storedValue = localStorage.getItem("messageNumber");
+        let num = 0;
+	    let storedValue = localStorage.getItem("messageNumber");
         if (storedValue != null) num = parseInt(storedValue);
         
         num += 2;
@@ -179,25 +179,24 @@ function initialize(){
 }
 
 function shortmonth(monthnum) {
-    var monthname;
-    shortmonths = ["JAN", "FEB", "MAR","APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"] ;
-    monthname = shortmonths [monthnum];
+    let shortmonths = ["JAN", "FEB", "MAR","APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"] ;
+    let monthname = shortmonths [monthnum];
     return monthname; 
 }
 function lastMonthShort(){
-    var d = new Date();
-    var m = d.getMonth();
+    let d = new Date();
+    let m = d.getMonth();
     if (d ==0) d = 11;
     else m--;
     return shortmonth(m);
 }
 function thisMonthShort(){
-    var d = new Date();
+    let d = new Date();
     return shortMonth(d.getMonth());
 }
 function findFirstThursday(year,month)
 {
-    for(i=1;i<=7;i++){
+    for(let i=1;i<=7;i++){
         d = new Date(year,month,i);
         if (d.getDay() == 4)
             return i;
@@ -230,12 +229,12 @@ function TimeNow(Timefld, doprompt) {
     }   
    
 function calcTotal(){
-    out = document.getElementById("outgoing").value;
-    inc =document.getElementById("incomming").value;
+    let out = document.getElementById("outgoing").value;
+    let inc =document.getElementById("incomming").value;
     
-    var total = parseInt(out)+parseInt(inc);
+    let total = parseInt(out)+parseInt(inc);
     document.getElementById("total").value = total;
-} 
+    } 
 </script>
 </head>
 <h1><font color='maroon' >Digital Station Activity Report</font></h1>

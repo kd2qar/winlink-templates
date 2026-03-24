@@ -30,7 +30,7 @@ NR <var messageNumber> R <CALLSIGN> 11 <var myCity> <var myState> <var messageDa
 <var phone>
 <var email>
 BT
-SAR <var SARMonth> <var SARYear> RCVD <var incomming>
+SAR <var SARMonth> <var SARYear> RECEIVED <var incomming>
 SENT <var outgoing> TOTAL <var total> X
 73
 BT

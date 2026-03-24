@@ -1,0 +1,13 @@
+To: NWS.FTPMail.OPS@noaa.gov
+Subject: Garrett County Airport Conditions
+Location: <Position>
+Readonly: Yes
+
+Msg:
+open
+cd data
+cd observations
+cd metar
+cd decoded
+get K2G2.TXT
+quit 
