@@ -120,6 +120,16 @@
         
         num += 2;
         document.forms[0].messageNumber.value = num;
+
+        storedValue = localStorage.getItem("mycity");
+        document.getElementById("myCity").value = storedValue;
+        
+        storedValue = localStorage.getItem("mystate");
+        document.getElementById("myState").value = storedValue;
+        
+        storedValue = localStorage.getItem("signature");
+        document.getElementById("signature").value = storedValue;
+
         /*
         var storedValue = localStorage.getItem("SARYear");
         document.forms[0].SARYear.value = storedValue;
@@ -132,8 +142,15 @@
     function saveit() {
         //messageNumber = document.getElementById("messageNumber").value;
         
-        var messageNumber=document.forms[0].messageNumber.value;
+        let messageNumber=document.forms[0].messageNumber.value;
         localStorage.setItem("messageNumber",messageNumber);
+        let storeValue = document.getElementById("myCity").value;
+        localStorage.setItem("mycity",storeValue);
+        storeValue = document.getElementById("myState").value;
+        localStorage.setItem("mystate",storeValue);
+        storeValue = document.getElementById("signature").value;
+        localStorage.setItem("signature",storeValue);
+
         }
     function show(shown, hidden) 
     {
@@ -169,13 +186,6 @@ function initialize(){
     form.messageDate.value = `${shortmonth(thismonth)} ${thisday}`;
     form.incomming.value=0;
     form.outgoing.value=0;
-    //form.total.value=91;
-    //form.Day1.value=thismonth;
-    //var o = findFirstThursday(thisyear,thismonth);
-    //form.Day1.value = o;
-    //form.Day2.value = o+1;
-    //form.Day3.value = o+2;
-    //form.Day4.value = o+3;
 }
 
 function shortmonth(monthnum) {
@@ -224,7 +234,8 @@ function TimeNow(Timefld, doprompt) {
     TimeStamp();
     } 
     window.onload=function(){
-        getit();
+        try { getit(); }
+        catch(error){}
         initialize();
     }   
    
@@ -235,16 +246,36 @@ function calcTotal(){
     let total = parseInt(out)+parseInt(inc);
     document.getElementById("total").value = total;
     } 
+
+function punctsignature(s, field){
+    fixemail(s,field);
+    }
+function fixemail(MSGText,fieldid='email') {
+    let n = MSGText;  
+    if (fieldid == 'email') { 
+        n = n.replace(/(\r\n|\n|\r)/gm," ");  
+        }
+    n=n.replace(/\./gm, " DOT ");  
+    n=n.replace(/\@/gm, " ATSIGN ");  
+    n=n.replace(/\  /gm, " ");  
+    n=n.replace(/\//gm, " SLASH ");  
+    n=n.replace(/\_/gm, " UNDERSCORE ");
+    let field = document.getElementById(fieldid);
+    field.value = n;  
+    return(n);
+    }
+
+
 </script>
 </head>
 <h1><font color='maroon' >Digital Station Activity Report</font></h1>
 <form class="form-container" id='dtssarform' method='post' action='http://{FormServer}:{FormPort}' onsubmit="javascript:saveit();" enctype='multipart/form-data'>
-<div class="form-title"><h2>DTS</h2></div>
+<div class="form-title"><h2>DTS SAR TEMPLATE</h2></div>
 <table><tr><td>Message Number</td><td>My Call</td><td>My City</td><td>My State</td><td>Message Date</td></tr>
        <tr><td><input type="number" min=1 max=999 name="messageNumber" id="messageNumber" value='{var messageNumber}'  ></td>
-        <td><input type='text' name='Callsign' maxlength="15" value='{Callsign}' style="width: 10em;"></td>
-        <td><input type='text' name='myCity' value='{var myCity}'></td>
-        <td><input type='text' name='myState' value='{var myState}' style="width: 4em;"></td>
+        <td><input type='text' name='Callsign' id='Callsign' maxlength="15" value='{Callsign}' style="width: 10em;"></td>
+        <td><input type='text' name='myCity' id='myCity' value='{var myCity}'></td>
+        <td><input type='text' name='myState' id='myState' value='{var myState}' style="width: 4em;"></td>
         <td><input type="text" name="messageDate" id="messageDate" readonly="Y" value="{var messageDate}"  style="width: 8em;"></td>
     </tr>
 </table>
@@ -287,6 +318,18 @@ function calcTotal(){
 </p>
 <p><div class="form-title">TOTAL:</div>
 <input min="0" max="999" type="number" name="total" id="total" value="{var total}"><p>
+
+<p>
+Signature (name) of person for whom message <span class="style1">originated</span>: &nbsp;&nbsp;
+<textarea name="signature" id="signature" rows="2" cols="80"
+        style="text-transform: uppercase;" 
+        placeholder="Person who originated this message" 
+        required="required"
+        onblur="javascript:punctsignature(this.value,this.id); this.value=this.value.toUpperCase();"
+        ></textarea>
+</p>
+
+
     <!--
 <div class="form-title">Days</div>
 <table><tr ><th >Day 1</th><th>Day 2</th><th>Day 3</th><th>Day4</th></tr>

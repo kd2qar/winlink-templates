@@ -136,15 +136,8 @@ function getit() {
         
         storedValue = localStorage.getItem("signature");
         document.getElementById("signature").value = storedValue;
-        /*
-        var storedValue = localStorage.getItem("SARYear");
-        document.forms[0].SARYear.value = storedValue;
-        var storedValue = localStorage.getItem("SARMonth");
-        document.forms[0].SARMonth.value = storedValue;
-        var storedValue = localStorage.getItem("Day4");
-        document.forms[0].Day4.value = storedValue;
-        */
-        }
+
+    }
 function saveit() {
         //messageNumber = document.getElementById("messageNumber").value;
         
@@ -296,7 +289,7 @@ function wordcount(s) {
     let elem = document.getElementById('WarningText');  
     elem.style.background = '#FFFFFF';  
     document.getElementById('WarningText').innerHTML = " ";    
-    if (cnt > 25) {// lert ("at 25 words"); #FFFF00  
+    if (cnt > 25) {// alert ("at 25 words"); #FFFF00  
     // Stop you have reached 30 words  
     elem.style.background = '#FFFFFF';  
     document.getElementById('WarningText').innerHTML = " ";  
@@ -309,23 +302,17 @@ function wordcount(s) {
         document.getElementById('WarningText').innerHTML = "You have entered "+cnt+ " groups.";  
         }
     }
-    let rrc = "";  
-    let n = s.search(/RRC /i);  
-    let m = s.search(/ RRC /i);  
     //arl
     let narl = s.search(/ARL /i);  
     let marl = s.search(/ ARL /i);  
     // need to check that one less than n is not a letter --/  
-    if (n==0) {rrc = "RRC "};  
-    if (narl==0 && rrc == '') {rrc = "ARL "}; 
-    if (m>1 && rrc == '') {rrc = "RRC "}; // alert ( n +" " + m); --/  
-    if (marl>1 && rrc == '') {rrc = "ARL "};  
+    if (narl==0 && arl == '') {arl = "ARL "}; 
+    if (marl>1 && arl == '') {arl = "ARL "};  
     // TEST FOR BOTH
-    if (m>-1 && marl>-1){alert('pick 0ne)')}
     let ele = document.getElementById('check');  
-    ele.value = rrc+cnt;  
+    ele.value = arl+cnt;  
     let ele2 = document.getElementById('check2');  
-    ele2.value = rrc+cnt;  
+    ele2.value = arl+cnt;  
     }
   
 
@@ -526,19 +513,13 @@ Callsign:
 <p><div class="form-title">City:
 <input  type="text" name="city" id="city" onblur="javascript:this.value=this.value.toUpperCase();">
 State (2 char):
-<input style="width: 3em;"  name="state" id="state" onchange="updateDTNsendto();" onblur="javascript:this.value=this.value.toUpperCase();">
+<input required="required" style="width: 3em;"  name="state" id="state" onchange="updateDTNsendto();" onblur="javascript:this.value=this.value.toUpperCase();">
 Zip Code:
-<input style="width:6em;" type="number" name="zipcode" id="zipcode" onchange="updateDTNsendto();"></div></p>
+<input required="required" style="width:6em;" type="number" name="zipcode" id="zipcode" onchange="updateDTNsendto();"></div></p>
 <p><div class="form-title">E-Mail:
 <input style="width: 40em" type="text" onchange="fixemail(this.value);" title= "Provide Email, phone number, or both. Without at least one delivery may not occur" 
         onblur="this.value= this.value.toUpperCase();" 
         name="email" id="email" ></div></p>
-<!--
-<input maxlength="65" name="Email" id="Email" size="75" 
-        title= "Provide Email, phone number, or both. Without at least one delivery may not occur" 
-        placeholder="NEED EMAIL, PHONE, OR BOTH TO ENSURE DELIVERY."  
-        onkeyup="fixpunct(this.value, this.id)" onchange="this.value=fixemail(this.value);" onblur="this.value=fixemail(this.value);this.value= this.value.toUpperCase();"/>
--->
 <p><div class="form-title">MESSAGE TEXT: 
     Check: 
     <input style="width: 7em;" name="check2" id="check2" size="10" maxlength="9" class="zentriert" readonly="readonly" value="0" type="text" />
@@ -555,12 +536,6 @@ Zip Code:
             <!-- onblur="javascript:fixemail(this.value,this.id);" -->
             <!--  fixrows(this.id)" -->
             <!--             required="required" -->
-<textarea title="Only punctuation converted to words are  ? @ - . _      The stroke sign / can be entered.  The rest can not." 
-            style="text-transform: uppercase;" cols="130" rows="7" 
-            id="MessageTXT" name="MessageTXT" 
-            placeholder="Suggestion is no more than 25 groups (words)" 
-            onkeyup="punctwrdcnt(this.value, this.id)" 
-            onchange="this.value=RWS(this.value); fix()"></textarea>
 <p>
 Signature (name) of person for whom message <span class="style1">originated</span>: &nbsp;&nbsp;
 <textarea name="signature" id="signature" rows="2" cols="80"

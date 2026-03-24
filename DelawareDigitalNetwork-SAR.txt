@@ -1,6 +1,6 @@
 form: DelawareDigitalNetwork-SAR.html
-Def: messageNumber=14
-Def: messageDate=NOV 1
+Def: messageNumber=1
+Def: messageDate=JAN 1
 Def: incomming=0
 Def: outgoing=0
 Def: total=0
@@ -34,4 +34,4 @@ SAR <var SARMonth> <var SARYear> RECEIVED <var incomming>
 SENT <var outgoing> TOTAL <var total> X
 73
 BT
-MARK KD2QAR
+<var signature>
