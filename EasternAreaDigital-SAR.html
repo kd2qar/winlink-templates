@@ -1,0 +1,338 @@
+<head>
+<title>Delaware Digital Network SAR</title>
+<style type="text/css">
+.form-container {
+ border: 1px solid #f2e3d2;
+ /*background: #c9b7a2;*/
+ background: #a2c4c9;
+ background: -webkit-gradient(linear, left top, left bottom, from(#f2e3d2), to(#c9b7a2));
+ background: -webkit-linear-gradient(top, #f2e3d2, #c9b7a2);
+ background: -moz-linear-gradient(top, #f2e3d2, #c9b7a2);
+ background: -ms-linear-gradient(top, #f2e3d2, #c9b7a2);
+ background: -o-linear-gradient(top, #f2e3d2, #c9b7a2);
+ background-image: -ms-linear-gradient(top, #f2e3d2 0%, #c9b7a2 100%);
+ -webkit-border-radius: 8px;
+ -moz-border-radius: 8px;
+ border-radius: 8px;
+ -webkit-box-shadow: rgba(000,000,000,0.9) 0 1px 2px, inset rgba(255,255,255,0.4) 0 0px 0;
+ -moz-box-shadow: rgba(000,000,000,0.9) 0 1px 2px, inset rgba(255,255,255,0.4) 0 0px 0;
+
+ box-shadow: rgba(000,000,000,0.9) 0 1px 2px, inset rgba(255,255,255,0.4) 0 0px 0;
+ font-family: 'Helvetica Neue',Helvetica,sans-serif;
+ text-decoration: none;
+ vertical-align: middle;
+ min-width:300px;
+ padding:20px;
+ width:600px;
+ }
+.form-field {
+ border: 1px solid #c9b7a2;
+ background: #e4d5c3;
+ -webkit-border-radius: 4px;
+ -moz-border-radius: 4px;
+ border-radius: 4px;
+ color: #c9b7a2;
+ -webkit-box-shadow: rgba(255,255,255,0.4) 0 1px 0, inset rgba(000,000,000,0.7) 0 0px 0px;
+ -moz-box-shadow: rgba(255,255,255,0.4) 0 1px 0, inset rgba(000,000,000,0.7) 0 0px 0px;
+ box-shadow: rgba(255,255,255,0.4) 0 1px 0, inset rgba(000,000,000,0.7) 0 0px 0px;
+ padding:8px;
+ margin-bottom:20px;
+ width:auto;
+ }
+.form-field:focus {
+ background: #fff;
+ color: #725129;
+ }
+.form-container h2 {
+ text-shadow: #fdf2e4 0 1px 0;
+ font-size:18px;
+ margin: 0 0 10px 0;
+ font-weight:bold;
+ text-align:center;
+ }
+.form-title {
+ margin-bottom:10px;
+ color: #725129;
+ text-shadow: #fdf2e4 0 1px 0;
+ }
+.submit-container {
+ margin:8px 0;
+ text-align:right;
+ }
+.submit-button {
+ border: 1px solid #447314;
+ background: #6aa436;
+ background: -webkit-gradient(linear, left top, left bottom, from(#8dc059), to(#6aa436));
+ background: -webkit-linear-gradient(top, #8dc059, #6aa436);
+ background: -moz-linear-gradient(top, #8dc059, #6aa436);
+ background: -ms-linear-gradient(top, #8dc059, #6aa436);
+ background: -o-linear-gradient(top, #8dc059, #6aa436);
+ background-image: -ms-linear-gradient(top, #8dc059 0%, #6aa436 100%);
+ -webkit-border-radius: 4px;
+ -moz-border-radius: 4px;
+ border-radius: 4px;
+ -webkit-box-shadow: rgba(255,255,255,0.4) 0 1px 0, inset rgba(255,255,255,0.4) 0 1px 0;
+ -moz-box-shadow: rgba(255,255,255,0.4) 0 1px 0, inset rgba(255,255,255,0.4) 0 1px 0;
+ box-shadow: rgba(255,255,255,0.4) 0 1px 0, inset rgba(255,255,255,0.4) 0 1px 0;
+ text-shadow: #addc7e 0 1px 0;
+ color: #31540c;
+ font-family: helvetica, serif;
+ padding: 8.5px 18px;
+ font-size: 14px;
+ text-decoration: none;
+ vertical-align: middle;
+ }
+.submit-button:hover {
+ border: 1px solid #447314;
+ text-shadow: #31540c 0 1px 0;
+ background: #6aa436;
+ background: -webkit-gradient(linear, left top, left bottom, from(#8dc059), to(#6aa436));
+ background: -webkit-linear-gradient(top, #8dc059, #6aa436);
+ background: -moz-linear-gradient(top, #8dc059, #6aa436);
+ background: -ms-linear-gradient(top, #8dc059, #6aa436);
+ background: -o-linear-gradient(top, #8dc059, #6aa436);
+ background-image: -ms-linear-gradient(top, #8dc059 0%, #6aa436 100%);
+
+ color: #fff;
+ }
+.submit-button:active {
+ text-shadow: #31540c 0 1px 0;
+ border: 1px solid #447314;
+ background: #8dc059;
+ background: -webkit-gradient(linear, left top, left bottom, from(#6aa436), to(#6aa436));
+ background: -webkit-linear-gradient(top, #6aa436, #8dc059);
+ background: -moz-linear-gradient(top, #6aa436, #8dc059);
+ background: -ms-linear-gradient(top, #6aa436, #8dc059);
+ background: -o-linear-gradient(top, #6aa436, #8dc059);
+ background-image: -ms-linear-gradient(top, #6aa436 0%, #8dc059 100%);
+ color: #fff;
+ }
+ input[type=text], select { width: 15em;  }
+ select { width: 8em;  }
+/* select:focus {width:auto}*/
+
+</style>
+<script language="javascript" type="text/javascript">
+
+    function getit() {
+        let num = 0;
+	    let storedValue = localStorage.getItem("messageNumber");
+        if (storedValue != null) num = parseInt(storedValue);
+        
+        num += 2;
+        document.forms[0].messageNumber.value = num;
+
+        storedValue = localStorage.getItem("mycity");
+        document.getElementById("myCity").value = storedValue;
+        
+        storedValue = localStorage.getItem("mystate");
+        document.getElementById("myState").value = storedValue;
+        
+        storedValue = localStorage.getItem("signature");
+        document.getElementById("signature").value = storedValue;
+
+        /*
+        var storedValue = localStorage.getItem("SARYear");
+        document.forms[0].SARYear.value = storedValue;
+        var storedValue = localStorage.getItem("SARMonth");
+        document.forms[0].SARMonth.value = storedValue;
+        var storedValue = localStorage.getItem("Day4");
+        document.forms[0].Day4.value = storedValue;
+        */
+        }
+    function saveit() {
+        //messageNumber = document.getElementById("messageNumber").value;
+        
+        let messageNumber=document.forms[0].messageNumber.value;
+        localStorage.setItem("messageNumber",messageNumber);
+        let storeValue = document.getElementById("myCity").value;
+        localStorage.setItem("mycity",storeValue);
+        storeValue = document.getElementById("myState").value;
+        localStorage.setItem("mystate",storeValue);
+        storeValue = document.getElementById("signature").value;
+        localStorage.setItem("signature",storeValue);
+
+        }
+    function show(shown, hidden) 
+    {
+        document.getElementById(shown).style.display='block'; 
+        document.getElementById(hidden).style.display='none'; 
+
+        return false;
+    }
+function initialize(){
+    // Reasonable guess for date of exercise
+    var d = new Date();
+    var thisyear = d.getFullYear();
+    var thismonth=d.getMonth();
+    var thisday=d.getDate();
+    var thisdow=d.getDay();
+    var lastyear = thisyear;
+    var lastmonth = thismonth;
+
+    if (thismonth < 1){
+        lastyear=thisyear-1;
+        lastmonth=11;
+    }
+    else {
+        lastyear = thisyear;
+        lastmonth = thismonth-1;
+    }
+    
+    document.getElementById("SARYear").value = lastyear;
+    var form = document.forms[0]; 
+    form = document.getElementById("dtssarform");
+    form.SARYear.value=lastyear;
+    form.SARMonth.value = shortmonth(lastmonth);
+    form.messageDate.value = `${shortmonth(thismonth)} ${thisday}`;
+    form.incomming.value=0;
+    form.outgoing.value=0;
+}
+
+function shortmonth(monthnum) {
+    let shortmonths = ["JAN", "FEB", "MAR","APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"] ;
+    let monthname = shortmonths [monthnum];
+    return monthname; 
+}
+function lastMonthShort(){
+    let d = new Date();
+    let m = d.getMonth();
+    if (d ==0) d = 11;
+    else m--;
+    return shortmonth(m);
+}
+function thisMonthShort(){
+    let d = new Date();
+    return shortMonth(d.getMonth());
+}
+function findFirstThursday(year,month)
+{
+    for(let i=1;i<=7;i++){
+        d = new Date(year,month,i);
+        if (d.getDay() == 4)
+            return i;
+    }
+    return 99;
+}
+function TimeNow(Timefld, doprompt) {
+    var txt;
+    var d = new Date();
+    thisyear = d.getFullYear();
+    thismonth= d.getMonth();
+    thismonth = thismonth+1;
+    if (thismonth < 10) { thismonth = "0"+thismonth};
+
+    thisday = d.getDate();
+    if (thisday < 10) { thisday = "0"+thisday};
+
+    h = (d.getHours()<10?'0':'') + d.getHours()
+    m = (d.getMinutes()<10?'0':'') + d.getMinutes()
+    s = (d.getSeconds()<10?'0':'') + d.getSeconds();
+    var myprompt = thisyear+ '-'+thismonth+'-'+thisday+' '+h + ':' + m+':'+s;
+    var RightNow = myprompt;
+    if (doprompt) {var RightNow = prompt("", myprompt);}
+    document.getElementById(Timefld).value = RightNow;
+    TimeStamp();
+    } 
+    window.onload=function(){
+        try { getit(); }
+        catch(error){}
+        initialize();
+    }   
+   
+function calcTotal(){
+    let out = document.getElementById("outgoing").value;
+    let inc =document.getElementById("incomming").value;
+    
+    let total = parseInt(out)+parseInt(inc);
+    document.getElementById("total").value = total;
+    } 
+
+function punctsignature(s, field){
+    fixemail(s,field);
+    }
+function fixemail(MSGText,fieldid='email') {
+    let n = MSGText;  
+    if (fieldid == 'email') { 
+        n = n.replace(/(\r\n|\n|\r)/gm," ");  
+        }
+    n=n.replace(/\./gm, " DOT ");  
+    n=n.replace(/\@/gm, " ATSIGN ");  
+    n=n.replace(/\  /gm, " ");  
+    n=n.replace(/\//gm, " SLASH ");  
+    n=n.replace(/\_/gm, " UNDERSCORE ");
+    let field = document.getElementById(fieldid);
+    field.value = n;  
+    return(n);
+    }
+
+
+</script>
+</head>
+<h1><font color='maroon' >Digital Station Activity Report</font></h1>
+<form class="form-container" id='dtssarform' method='post' action='http://{FormServer}:{FormPort}' onsubmit="javascript:saveit();" enctype='multipart/form-data'>
+<div class="form-title"><h2>RRI Eastern Area Digital SAR Template</h2></div>
+<table><tr><td>Message Number</td><td>My Call</td><td>My City</td><td>My State</td><td>Message Date</td></tr>
+       <tr><td><input type="number" min=1 max=999 name="messageNumber" id="messageNumber" value='{var messageNumber}'  ></td>
+        <td><input type='text' name='Callsign' id='Callsign' maxlength="15" value='{Callsign}' style="width: 10em;"></td>
+        <td><input type='text' name='myCity' id='myCity' value='{var myCity}'></td>
+        <td><input type='text' name='myState' id='myState' value='{var myState}' style="width: 4em;"></td>
+        <td><input type="text" name="messageDate" id="messageDate" readonly="Y" value="{var messageDate}"  style="width: 8em;"></td>
+    </tr>
+</table>
+
+<table>
+<tr>
+<td><span class="form-title">SAR Year</span></td>
+<td><input type="number" name="SARYear" id="SARYear" min="2026" max="9999" ></td>
+</tr><tr>
+<td><span class="form-title">SAR Month</span></td>
+<td><select id="SARMonth" name="SARMonth"  >
+    <option value="JAN">January</option>
+    <option value="FEB">February</option>
+    <option value="MAR">March</option>
+    <option value="APR">April</option>
+    <option value="MAY">May</option>
+    <option value="JUN">June</option>
+    <option value="JUL">July</option>
+    <option value="AUG">August</option>
+    <option value="SEP">September</option>
+    <option value="OCT">October</option>
+    <option value="NOV">November</option>
+    <option value="DEC">December</option>
+</select></td>
+</tr>
+</table>
+<table>
+<tr>
+<td><span class="form-title">Messages Received:</span></td>
+<td><input onchange="calcTotal();" min="0" max="999" type="number" name="incomming" id="incomming" value="{var incomming}"> </td>
+</tr>
+<tr>
+<td><div class="form-title">Messages Sent:</div></td>
+<td><input onchange="calcTotal();" min="0" max="999" type="number" name="outgoing" id="outgoing" value="{var outgoing}"></td>
+</tr>
+<tr>
+<td><div class="form-title">TOTAL:</div></td>
+<td><input min="0" max="999" type="number" name="total" id="total" value="{var total}"></td>
+</tr>
+</table>
+
+Signature (name) of person from whom message <span class="style1">originated</span>: &nbsp;&nbsp;
+<textarea name="signature" id="signature" rows="2" cols="80"
+        style="text-transform: uppercase;" 
+        placeholder="Person who originated this message" 
+        required="required"
+        onblur="javascript:punctsignature(this.value,this.id); this.value=this.value.toUpperCase();"
+        ></textarea>
+</p>
+
+
+<p>
+<input type='submit' name='Submit' value='Submit' method='Post' enctype='multipart/form-data' />
+</p>
+<p>
+<input type='submit' name='Submit' value='Cancel' method='Post' enctype='multipart/form-data' />
+</p>
+</form>
+

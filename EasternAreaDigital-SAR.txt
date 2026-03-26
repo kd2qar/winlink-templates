@@ -1,0 +1,37 @@
+form: DelawareDigitalNetwork-SAR.html
+Def: messageNumber=1
+Def: messageDate=JAN 1
+Def: incomming=0
+Def: outgoing=0
+Def: total=0
+Def: name=JIM KUTCH
+Def: call=KY2D
+Def: zipcode=04543
+Def: state=ME
+Def: city=DAMARISCOTTA
+Def: address=PO BOX 159
+Def: myCity=SWANTON
+Def: myState=MD
+Def: phone=
+Def: email=EMAIL JIM ATSIGN KY2D DOT COM
+Def: sendto=nts:04543@ntsme
+From: <Callsign>
+To: <var sendto> 
+Source: <Callsign>
+Location: <GPS>
+Subject: <var city> <var call>
+
+
+Msg:
+NR <var messageNumber> R <CALLSIGN> 11 <var myCity> <var myState> <var messageDate>
+<var name> <var call>
+<var address>
+<var city> <var state> <var zipcode>
+<var phone>
+<var email>
+BT
+SAR <var SARMonth> <var SARYear> RECEIVED <var incomming>
+SENT <var outgoing> TOTAL <var total> X
+73
+BT
+<var signature>
