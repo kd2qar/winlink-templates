@@ -246,24 +246,23 @@ Callsign     :\<Callsign>
 
 After applying this template, the message form would look like this:
 
-{bmc MessageTemplate.bmp}
-
+![Message Template](MessageTemplate.png "Message Form")
 
 ### Template Manager
 
 Winlink Express includes a Template Manager where you can view and edit existing templates and add or remove templates.  Start the Template Manager by clicking "Messages" on the main screen menu bar followed by   "Templates..." from the menu drop-down list.
 
-{bmc TemplateManager.png}
+![Template Manager](TemplateManager.png "Template Manager")
 
 To edit an existing template, select (highlight) the name of the template and then click "Edit" or just double click the name of the template.
 
-{bmc TemplateEditor.bmp}
+![Template Editor](TemplateEditor.png "Template Editor")
 
 ### Specifying Favorite Templates
 
 Winlink Express allows you to set up to the "favorite" templates.  If a favorite template is set, its name will be displayed on the menu bar for the new-message entry screen.  To set favorite templates, click "Messages" on the main menu followed by "Set favorite templates".  This screen will be displayed:
 
-{bmc SetFavoriteTemplates.png}
+![Set Favorite Templates](SetFavoriteTemplates.png "Set Favorite Templates")
 
 There are two items for each favorite template:
 
@@ -274,12 +273,13 @@ File name -- This is the name of the actual template file.  You can click the Br
 Here's a new message screen showing "Incident Report" as one of the favorite templates.
 
 {bmc FavoriteTemplateExample.png}
+![Favorite Template Example](FavoriteTemplateExample.png "Favorite Template Example")
 
 ### Template Settings
 
 To control various template settings, click "Messages" on the main menu bar followed by "Template Settings".  A screen similar to this will be displayed:
 
-{bmc Template Settings.png}
+![Template Settings](TemplateSettings.png "Template Settings")
 
 #### Template Sequence Number
 
