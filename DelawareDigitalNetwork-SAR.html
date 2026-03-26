@@ -107,9 +107,10 @@
  background-image: -ms-linear-gradient(top, #6aa436 0%, #8dc059 100%);
  color: #fff;
  }
- input[type=text], select {
-    width: 15em;
-     }
+ input[type=text], select { width: 15em;  }
+ select { width: 8em;  }
+/* select:focus {width:auto}*/
+
 </style>
 <script language="javascript" type="text/javascript">
 
@@ -270,7 +271,7 @@ function fixemail(MSGText,fieldid='email') {
 </head>
 <h1><font color='maroon' >Digital Station Activity Report</font></h1>
 <form class="form-container" id='dtssarform' method='post' action='http://{FormServer}:{FormPort}' onsubmit="javascript:saveit();" enctype='multipart/form-data'>
-<div class="form-title"><h2>DTS SAR TEMPLATE</h2></div>
+<div class="form-title"><h2>RRI Eastern Area Digital SAR Template</h2></div>
 <table><tr><td>Message Number</td><td>My Call</td><td>My City</td><td>My State</td><td>Message Date</td></tr>
        <tr><td><input type="number" min=1 max=999 name="messageNumber" id="messageNumber" value='{var messageNumber}'  ></td>
         <td><input type='text' name='Callsign' id='Callsign' maxlength="15" value='{Callsign}' style="width: 10em;"></td>
@@ -279,24 +280,14 @@ function fixemail(MSGText,fieldid='email') {
         <td><input type="text" name="messageDate" id="messageDate" readonly="Y" value="{var messageDate}"  style="width: 8em;"></td>
     </tr>
 </table>
-<!--
-<div class="form-title">Message Number</div>
 
-<p>
-<div class="form-title">Message Date (Month Day):</div>
-
-<p>
-<div class="form-title">Callsign</div>
-
-<p>
--->
-<!-- <input type='text' name='ExMonth' value='{ExMonth}'><br>
-<input type='text' name="FormFolder" value='{FormFolder}'> -->
-<div class="form-title">Year</div>
-<input type="number" name="SARYear" id="SARYear" min="2025" max="9999" >
-<p>
-<div class="form-title">SAR Month</div>
-<select id="SARMonth" name="SARMonth">
+<table>
+<tr>
+<td><span class="form-title">SAR Year</span></td>
+<td><input type="number" name="SARYear" id="SARYear" min="2026" max="9999" ></td>
+</tr><tr>
+<td><span class="form-title">SAR Month</span></td>
+<td><select id="SARMonth" name="SARMonth"  >
     <option value="JAN">January</option>
     <option value="FEB">February</option>
     <option value="MAR">March</option>
@@ -309,18 +300,25 @@ function fixemail(MSGText,fieldid='email') {
     <option value="OCT">October</option>
     <option value="NOV">November</option>
     <option value="DEC">December</option>
-</select>
-<p><div class="form-title">Messages Received:</div>
-<input onchange="calcTotal();" min="0" max="999" type="number" name="incomming" id="incomming" value="{var incomming}">
-</p>
-<p><div class="form-title">Messages Sent:</div>
-<input onchange="calcTotal();" min="0" max="999" type="number" name="outgoing" id="outgoing" value="{var outgoing}">
-</p>
-<p><div class="form-title">TOTAL:</div>
-<input min="0" max="999" type="number" name="total" id="total" value="{var total}"><p>
+</select></td>
+</tr>
+</table>
+<table>
+<tr>
+<td><span class="form-title">Messages Received:</span></td>
+<td><input onchange="calcTotal();" min="0" max="999" type="number" name="incomming" id="incomming" value="{var incomming}"> </td>
+</tr>
+<tr>
+<td><div class="form-title">Messages Sent:</div></td>
+<td><input onchange="calcTotal();" min="0" max="999" type="number" name="outgoing" id="outgoing" value="{var outgoing}"></td>
+</tr>
+<tr>
+<td><div class="form-title">TOTAL:</div></td>
+<td><input min="0" max="999" type="number" name="total" id="total" value="{var total}"></td>
+</tr>
+</table>
 
-<p>
-Signature (name) of person for whom message <span class="style1">originated</span>: &nbsp;&nbsp;
+Signature (name) of person from whom message <span class="style1">originated</span>: &nbsp;&nbsp;
 <textarea name="signature" id="signature" rows="2" cols="80"
         style="text-transform: uppercase;" 
         placeholder="Person who originated this message" 
@@ -330,17 +328,6 @@ Signature (name) of person for whom message <span class="style1">originated</spa
 </p>
 
 
-    <!--
-<div class="form-title">Days</div>
-<table><tr ><th >Day 1</th><th>Day 2</th><th>Day 3</th><th>Day4</th></tr>
-    <tr>
-        <td><input min="1" max="31" type="number" name="Day1" ></td>
-        <td><input min="1" max="31" type="number" name="Day2" ></td>
-        <td><input min="1" max="31" type="number" name="Day3" ></td>
-        <td><input min="1" max="31" type="number" name="Day4" ></td>
-    </tr>
-</table>
--->
 <p>
 <input type='submit' name='Submit' value='Submit' method='Post' enctype='multipart/form-data' />
 </p>
