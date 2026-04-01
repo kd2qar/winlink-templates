@@ -4,6 +4,7 @@
   Most are pretty specific to my use cases but may be useful starting points for your own versions.
   
   Your mileage may vary...
+  Wear a helmet!
 
 ## Notes:
 ### Template Control Fields
