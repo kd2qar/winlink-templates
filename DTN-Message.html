@@ -1,5 +1,9 @@
 <head>
 <title>Digital Traffic Network Message</title>
+  <!-- 
+  Author: KD2QAR
+  borrowed heavily from standard Radiogram form by KB1TCE
+  -->
 <style type="text/css">
 .form-container {
  border: 1px solid #f2e3d2;
@@ -197,7 +201,7 @@ function shortmonth(monthnum) {
     let shortmonths = ["JAN", "FEB", "MAR","APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"] ;
     let monthname = shortmonths [monthnum];
     return monthname; 
-}
+    }
 function lastMonthShort(){
     let d = new Date();
     let m = d.getMonth();
@@ -238,7 +242,7 @@ function TimeNow(Timefld, doprompt) {
     document.getElementById(Timefld).value = RightNow;
     TimeStamp();
     } 
-    window.onload=function(){
+window.onload=function(){
         getit();
         initialize();
     }   
@@ -263,8 +267,8 @@ function fixemail(MSGText,fieldid='email') {
     return(n);
     }
 function RWS(str) {  
-    let text2 = str.replace(/\s+$/,"");
-    text2 = str.replace(/\.+$/,"");
+    //let text2 = str.replace(/\s+$/,"");
+    let text2 = str.replace(/\.+$/,"");
     text2=text2.replace(/\./gm, " X ");
     return text2.trim();
     }  
@@ -314,17 +318,16 @@ function wordcount(s) {
     let ele2 = document.getElementById('check2');  
     ele2.value = arl+cnt;  
     }
-  
 
 function Strippunct(MSGText, fieldid) {
     let n = MSGText;
     n = n.replace(/(\r\n|\n|\r)/gm," ");  
     n=n.replace(/\,/gm, "");  
     n=n.replace(/\-/gm, "");  
-    n=n.replace(/\?/gm, "");  
+    n=n.replace(/\?/gm, " QUERY ");  
     n=n.replace(/\!/gm, "");
     n=n.replace(/\:/gm, "");  
-    n=n.replace(/\@/gm, "");  
+    n=n.replace(/\@/gm, " ATSIGN ");  
     n=n.replace(/\"/gm, "");  
     n=n.replace(/\\/gm, "");  
     n=n.replace(/\+/gm, "");  
@@ -333,7 +336,7 @@ function Strippunct(MSGText, fieldid) {
     n=n.replace(/\_/gm, " UNDERSCORE ");  
     n=n.replace(/\'/gm, "");  
     n=n.replace(/\#/gm, "");  
-    n=n.replace(/\%/gm, "");  
+    n=n.replace(/\%/gm, " PERCENT ");  
     n=n.replace(/\(/gm, "");  
     n=n.replace(/\)/gm, "");  
     n=n.replace(/\&/gm, "");  
@@ -401,8 +404,7 @@ function fixpunct(MSGText, fieldid) {
     document.getElementById(fieldid).value = n;  
     return(n);  
     }  
-  
-        
+
 function fixzip(MSGText,fieldid='zipcode') {  
     let n = MSGText;  
     n=n.replace(/\-/gm, " DASH ");  
@@ -434,36 +436,37 @@ function calcTotal(){
     let total = parseInt(out)+parseInt(inc);
     document.getElementById("total").value = total;
     } 
-  
-function fix (fieldid='tformat') {  
-    if (document.getElementById(fieldid).checked) {
-        useUTC= document.getElementById(fieldid).value;
-        }
-    document.getElementById("Submitbutton").disabled = false;  
-    let String1 = document.getElementById('MessageText').value;
-    String1 = fixpunct(String1, 'MessageText');
+
+function addthis(lnum) {
+    let s = '';  
+    let x = lnum;  
+    x = x +1;  
+    // Forcewords
+    let maxwords = 5; //document.getElementById('Forcewords').value;
+    let y = maxwords;   
+    let z = x % y;  
+    if (z == 0) { s = '\n'} else ( s = ' ');  
+    return (s);
+    }  
+
+function fix (){  
+    document.getElementById("Submit").disabled = false;  
+    let String1 = document.getElementById('messageText').value;  
+    String1 = fixpunct(String1, 'messageText');  
     String1= String1.trim();  
-    let answer = String1.slice(-2);       
-    if (answer== " X") {String1=String1.substring(0,String1.length - 2); }  
+    let answer = String1.slice(-2); 
+    if (answer== " X") {String1=String1.substring(0,String1.length - 2); } 
     String1= String1.trim();
-    let rrc = "";
-    let n = String1.search(/RRC /i);  
-    let m = String1.search(/ RRC /i);  
-    // need to check that one less than n is not a letter --/
-    if (n==0) {rrc = "RRC "};  
-    if (m>1) {rrc = "RRC "}; 
     let temp = String1.split(' ');  
-    let howmany = temp.length;  
-    document.getElementById('check2').value = document.getElementById('check').value   
-    let newstring = '';
-    for (i = 0; i < temp.length; i++) { newstring = newstring +temp[i] + addthis (i); }
+   document.getElementById('check2').value = document.getElementById('check').value 
+    var newstring = '';  
+    for (i = 0; i < temp.length; i++) { newstring = newstring +temp[i] + addthis (i);  }  
     newstring = newstring.toUpperCase();  
     document.getElementById('messageText').value = newstring; return ;  
     }  
 
 function fixseq(){
     let sq = document.getElementById('NumberVal' ).value;  
-    //test
     sq = sq.replace(/^0+/, '');
     document.getElementById('NumberVal' ).value = sq;
     }
@@ -492,30 +495,20 @@ function updateDTNsendto(){
         <td><input type="text" name="messageDate" id="messageDate" readonly="Y" value="{var messageDate}"  style="width: 8em;"></td>
     </tr>
 </table>
-<!--
-<div class="form-title">Message Number</div>
 
-<p>
-<div class="form-title">Message Date (Month Day):</div>
-
-<p>
-<div class="form-title">Callsign</div>
-
-<p>
--->
 <input type="text" hidden="true" name="sendto" id="sendto" >
 <p><div class="form-title">Name:
-<input type="text" name="name" id="name" >
+<input type="text" name="name" id="name" style="text-transform: uppercase;" onblur="javascript:this.value=this.value.toUpperCase();">
 Callsign:
-<input min="0" name="call" id="call" onblur="javascript:this.value=this.value.toUpperCase();"></div><p>
+<input name="call" id="call" style="text-transform: uppercase;" onblur="javascript:this.value=this.value.toUpperCase();"></div><p>
 <p><div class="form-title">Address:
-<input min="0" name="address" id="address" onblur="javascript:this.value=this.value.toUpperCase();"></div><p>
+<input name="address" id="address" style="text-transform: uppercase;width:30em" onblur="javascript:this.value=this.value.toUpperCase();"></div><p>
 <p><div class="form-title">City:
-<input  type="text" name="city" id="city" onblur="javascript:this.value=this.value.toUpperCase();">
+<input  type="text" name="city" id="city" style="text-transform: uppercase;" onblur="javascript:this.value=this.value.toUpperCase();">
 State (2 char):
-<input required="required" style="width: 3em;"  name="state" id="state" onchange="updateDTNsendto();" onblur="javascript:this.value=this.value.toUpperCase();">
+<input required="required" style="width: 3em;"  name="state" id="state" style="text-transform: uppercase;" onchange="updateDTNsendto();" onblur="javascript:this.value=this.value.toUpperCase();">
 Zip Code:
-<input required="required" style="width:6em;" type="number" name="zipcode" id="zipcode" onchange="updateDTNsendto();"></div></p>
+<input required="required" style="width:6em;" type="text" name="zipcode" id="zipcode" onchange="updateDTNsendto();" onblur="this.value= this.value.toUpperCase();"></div></p>
 <p><div class="form-title">E-Mail:
 <input style="width: 40em" type="text" onchange="fixemail(this.value);" title= "Provide Email, phone number, or both. Without at least one delivery may not occur" 
         onblur="this.value= this.value.toUpperCase();" 
@@ -530,12 +523,10 @@ Zip Code:
             style="text-transform: uppercase;" 
             placeholder="Enter your message here maximum of 25 words for DTN traffic ..."
             onkeyup="punctwrdcnt(this.value, this.id)" 
-            onchange="this.value=RWS(this.value);" 
-            onblur="javascript:fixemail(this.value,this.id);"
+            onchange="this.value=RWS(this.value);fix();" 
+            onblur="javascript:fixemail(this.value,this.id);this.value= this.value.toUpperCase();fix();"
             ></textarea>
-            <!-- onblur="javascript:fixemail(this.value,this.id);" -->
-            <!--  fixrows(this.id)" -->
-            <!--             required="required" -->
+        </textarea>
 <p>
 Signature (name) of person for whom message <span class="style1">originated</span>: &nbsp;&nbsp;
 <textarea name="signature" id="signature" rows="2" cols="80"
@@ -545,31 +536,14 @@ Signature (name) of person for whom message <span class="style1">originated</spa
         onblur="javascript:punctsignature(this.value,this.id); this.value=this.value.toUpperCase();"
         ></textarea>
 </p>
-<!--
-<textarea title="Only punctuation converted to words are  ? @ - . _      The stroke sign / can be entered.  The rest can not." 
-        style="text-transform: uppercase;" cols="130" 
-        id="MessageTXT" name="MessageTXT" rows="7" 
-        placeholder="Suggestion is no more than 25 groups (words)" required="required" 
-        onkeyup="punctwrdcnt(this.value, this.id)" 
-        onchange="this.value=RWS(this.value); fix()"></textarea>
--->
+
 </p>
-    <!--
-<div class="form-title">Days</div>
-<table><tr ><th >Day 1</th><th>Day 2</th><th>Day 3</th><th>Day4</th></tr>
-    <tr>
-        <td><input min="1" max="31" type="number" name="Day1" ></td>
-        <td><input min="1" max="31" type="number" name="Day2" ></td>
-        <td><input min="1" max="31" type="number" name="Day3" ></td>
-        <td><input min="1" max="31" type="number" name="Day4" ></td>
-    </tr>
-</table>
--->
+
 <p>
-<input type='submit' name='Submit' value='Submit' method='Post' enctype='multipart/form-data' />
+<input type='submit' id='Submit' name='Submit' value='Submit' method='Post' enctype='multipart/form-data' />
 </p>
 <p>
-<input type='submit' name='Submit' value='Cancel' method='Post' enctype='multipart/form-data' />
+<input type='submit' id="Cancel" name='Cancel' value='Cancel' method='Post' enctype='multipart/form-data' />
 </p>
 </form>
 
