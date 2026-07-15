@@ -1,0 +1,318 @@
+<head>
+<!-- link href="{FormFolder}MDC_EMCOMM_Target_Station.css" rel="stylesheet" type="text/css" / -->
+<title>MDC EMMCOM Target Station Schedule</title>
+<style type="text/css" rel="stylesheet">
+.form-container {
+ border: 1px solid #f2e3d2;
+ background: #c9b7a2;
+ background: -webkit-gradient(linear, left top, left bottom, from(#f2e3d2), to(#c9b7a2));
+ background: -webkit-linear-gradient(top, #f2e3d2, #c9b7a2);
+ background: -moz-linear-gradient(top, #f2e3d2, #c9b7a2);
+ background: -ms-linear-gradient(top, #f2e3d2, #c9b7a2);
+ background: -o-linear-gradient(top, #f2e3d2, #c9b7a2);
+ background-image: -ms-linear-gradient(top, #f2e3d2 0%, #c9b7a2 100%);
+ -webkit-border-radius: 8px;
+ -moz-border-radius: 8px;
+ border-radius: 8px;
+ -webkit-box-shadow: rgba(000,000,000,0.9) 0 1px 2px, inset rgba(255,255,255,0.4) 0 0px 0;
+ -moz-box-shadow: rgba(000,000,000,0.9) 0 1px 2px, inset rgba(255,255,255,0.4) 0 0px 0;
+
+ box-shadow: rgba(000,000,000,0.9) 0 1px 2px, inset rgba(255,255,255,0.4) 0 0px 0;
+ font-family: 'Helvetica Neue',Helvetica,sans-serif;
+ text-decoration: none;
+ vertical-align: middle;
+ min-width:300px;
+ padding:20px;
+ width:600px;
+ }
+.form-field {
+ border: 1px solid #c9b7a2;
+ background: #e4d5c3;
+ -webkit-border-radius: 4px;
+ -moz-border-radius: 4px;
+ border-radius: 4px;
+ color: #c9b7a2;
+ -webkit-box-shadow: rgba(255,255,255,0.4) 0 1px 0, inset rgba(000,000,000,0.7) 0 0px 0px;
+ -moz-box-shadow: rgba(255,255,255,0.4) 0 1px 0, inset rgba(000,000,000,0.7) 0 0px 0px;
+ box-shadow: rgba(255,255,255,0.4) 0 1px 0, inset rgba(000,000,000,0.7) 0 0px 0px;
+ padding:8px;
+ margin-bottom:20px;
+ width:auto;
+ }
+.form-field:focus {
+ background: #fff;
+ color: #725129;
+ }
+.form-container h2 {
+ text-shadow: #fdf2e4 0 1px 0;
+ font-size:18px;
+ margin: 0 0 10px 0;
+ font-weight:bold;
+ text-align:center;
+ }
+.form-title {
+ margin-bottom:10px;
+ color: #725129;
+ text-shadow: #fdf2e4 0 1px 0;
+ }
+.submit-container {
+ margin:8px 0;
+ text-align:right;
+ }
+.submit-button {
+ border: 1px solid #447314;
+ background: #6aa436;
+ background: -webkit-gradient(linear, left top, left bottom, from(#8dc059), to(#6aa436));
+ background: -webkit-linear-gradient(top, #8dc059, #6aa436);
+ background: -moz-linear-gradient(top, #8dc059, #6aa436);
+ background: -ms-linear-gradient(top, #8dc059, #6aa436);
+ background: -o-linear-gradient(top, #8dc059, #6aa436);
+ background-image: -ms-linear-gradient(top, #8dc059 0%, #6aa436 100%);
+ -webkit-border-radius: 4px;
+ -moz-border-radius: 4px;
+ border-radius: 4px;
+ -webkit-box-shadow: rgba(255,255,255,0.4) 0 1px 0, inset rgba(255,255,255,0.4) 0 1px 0;
+ -moz-box-shadow: rgba(255,255,255,0.4) 0 1px 0, inset rgba(255,255,255,0.4) 0 1px 0;
+ box-shadow: rgba(255,255,255,0.4) 0 1px 0, inset rgba(255,255,255,0.4) 0 1px 0;
+ text-shadow: #addc7e 0 1px 0;
+ color: #31540c;
+ font-family: helvetica, serif;
+ padding: 8.5px 18px;
+ font-size: 14px;
+ text-decoration: none;
+ vertical-align: middle;
+ }
+.submit-button:hover {
+ border: 1px solid #447314;
+ text-shadow: #31540c 0 1px 0;
+ background: #6aa436;
+ background: -webkit-gradient(linear, left top, left bottom, from(#8dc059), to(#6aa436));
+ background: -webkit-linear-gradient(top, #8dc059, #6aa436);
+ background: -moz-linear-gradient(top, #8dc059, #6aa436);
+ background: -ms-linear-gradient(top, #8dc059, #6aa436);
+ background: -o-linear-gradient(top, #8dc059, #6aa436);
+ background-image: -ms-linear-gradient(top, #8dc059 0%, #6aa436 100%);
+
+ color: #fff;
+ }
+.submit-button:active {
+ text-shadow: #31540c 0 1px 0;
+ border: 1px solid #447314;
+ background: #8dc059;
+ background: -webkit-gradient(linear, left top, left bottom, from(#6aa436), to(#6aa436));
+ background: -webkit-linear-gradient(top, #6aa436, #8dc059);
+ background: -moz-linear-gradient(top, #6aa436, #8dc059);
+ background: -ms-linear-gradient(top, #6aa436, #8dc059);
+ background: -o-linear-gradient(top, #6aa436, #8dc059);
+ background-image: -ms-linear-gradient(top, #6aa436 0%, #8dc059 100%);
+ color: #fff;
+ }    
+</style>
+<script language="javascript" type="text/javascript">
+
+function getit() {
+    let storedValue = localStorage.getItem("Day1");
+    document.forms[0].Day1.value = storedValue;
+    storedValue = localStorage.getItem("Day2");
+    document.forms[0].Day2.value = storedValue;
+    storedValue = localStorage.getItem("Day3");
+    document.forms[0].Day3.value = storedValue;
+    storedValue = localStorage.getItem("Day4");
+    document.forms[0].Day4.value = storedValue;
+     }
+function show(shown, hidden)  {
+    document.getElementById(shown).style.display='block'; 
+    document.getElementById(hidden).style.display='none'; 
+    return false;
+    }
+function initialize(){
+    // Reasonable guess for date of exercise
+    let d = new Date();
+    let thisyear = d.getFullYear();
+    let thismonth=d.getMonth();
+    let thisday=d.getDate();
+    let thisdow=d.getDay();
+
+    if (thisday>7){
+        if (thismonth>11){
+            thisyear+=1;
+            thismonth=1;
+        }
+        else
+            thismonth+=1;
+    }
+    let form = document.forms[0]; 
+    form.ExYear.value=thisyear;
+    form.ExMonth.value = shortmonth(thismonth);
+    form.Day1.value=thismonth;
+    //let o = findFirstThursday(thisyear,thismonth);
+    let o = findFirstThursdayAfterFirstTuesday(thisyear,thismonth);
+    form.Day1.value = o;
+    form.Day2.value = o+1;
+    form.Day3.value = o+2;
+    form.Day4.value = o+3;
+}
+function shortmonth(monthnum) {
+    let shortmonths = ["JAN", "FEB", "MAR","APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"] ;
+    let monthname = shortmonths [monthnum];
+    return monthname; 
+}
+function findFirstThursday(year,month)
+{
+    for(let i=1;i<=7;i++){
+        let d = new Date(year,month,i);
+        if (d.getDay() == 4)
+            return i;
+    }
+    return 99;
+}
+function findFirstTuesday(year,month)
+{
+    for(let i=1;i<=7;i++){
+        let d = new Date(year,month,i);
+        if (d.getDay() == 2)
+            return i;
+    }
+    return 99;
+}
+function findFirstFriday(year,month)
+{
+    for(let i=1;i<=7;i++){
+        let d = new Date(year,month,i);
+        if (d.getDay() == 5)
+            return i;
+    }
+    return 99;
+}
+function findFirstTuesdayAfterFirstFriday(year,month)
+{
+    let fri = findFirstFriday(year,month);
+    return fri + 4;
+}
+function findFirstThursdayAfterFirstFriday(year,month)
+{
+    let fri = findFirstFriday(year,month);
+    return fri + 6;
+}
+function findFirstThursdayAfterFirstTuesday(year,month)
+{
+    // Challenges are conducted on the Thursday through Sunday preceding the second Tuesday of each month, except in October which is reserved for ARRL SET activities. (The second Tuesdays are MDC Digital Check-ins.)
+    let tues = findFirstTuesday(year,month);
+    return tues +2;
+}
+function findSecondTuesday(year,month)
+{
+    let first = findFirstTuesday(year,month);
+    return first + 7;
+}
+
+function TimeNow(Timefld, doprompt) {
+    var txt;
+    var d = new Date();
+    thisyear = d.getFullYear();
+    thismonth= d.getMonth();
+    thismonth = thismonth+1;
+    if (thismonth < 10) { thismonth = "0"+thismonth};
+
+    thisday = d.getDate();
+    if (thisday < 10) { thisday = "0"+thisday};
+
+    h = (d.getHours()<10?'0':'') + d.getHours()
+    m = (d.getMinutes()<10?'0':'') + d.getMinutes()
+    s = (d.getSeconds()<10?'0':'') + d.getSeconds();
+    var myprompt = thisyear+ '-'+thismonth+'-'+thisday+' '+h + ':' + m+':'+s;
+    var RightNow = myprompt;
+    if (doprompt) {var RightNow = prompt("", myprompt);}
+    document.getElementById(Timefld).value = RightNow;
+    TimeStamp();
+    } 
+    window.onload=function(){
+        getit();
+        initialize();
+    }    
+document.addEventListener('DOMContentLoaded',whoopie);
+function whoopie(){
+    let btn = document.getElementById('addFldigiBtn');
+    btn.caption="whoopie";
+}
+</script>
+<script type='text/javascript' language="javascript"
+        src="MDC_EMCOMM_Target_station2.js"   ></script>
+</head>
+<h1><font color='maroon' >MDC EMCOMM Digital Exercise</font></h1>
+<form name="TargetStationSched" id='TargetStationSched'
+    class="form-container"  
+    method='post' action='http://{FormServer}:{FormPort}' enctype='multipart/form-data'>
+<div class="form-title"><h2>Target Station Schedule</h2></div>
+<div class="form-title">Send report to:
+<input type="text" name="address" value='{var address}' ></div>
+<p>
+<div class="form-title">CC To:</div>
+<input type="text" name="ccstations" style="min-width:300px; width:580" value="{var ccstations}">
+<p>
+<div class="form-title">Callsign
+<input type='text' name='Callsign' id="Callsign" value='{Callsign}' 
+        onblur="javascript:this.value=this.value.toUpperCase()"></div>
+<p>
+<div class="form-title">Exercise Dates</div>
+<!-- <input type='text' name='ExMonth' value='{ExMonth}'><br>
+<input type='text' name="FormFolder" value='{FormFolder}'> -->
+<div class="form-title">Year
+<input type="number" name="ExYear" id="ExYear" style="width:5em" ></div>
+<p>
+<div class="form-title">Month
+<select id="ExMonth" name="ExMonth">
+    <option value="JAN">January</option>
+    <option value="FEB">February</option>
+    <option value="MAR">March</option>
+    <option value="APR">April</option>
+    <option value="MAY">May</option>
+    <option value="JUN">June</option>
+    <option value="JUL">July</option>
+    <option value="AUG">August</option>
+    <option value="SEP">September</option>
+    <option value="OCT">October</option>
+    <option value="NOV">November</option>
+    <option value="DEC">December</option>
+</select></div>
+<p>
+<div class="form-title">Days
+<table><tr ><th >Day 1</th><th>Day 2</th><th>Day 3</th><th>Day4</th></tr>
+    <tr>
+        <td><input min="1" max="31" type="number" name="Day1" ></td>
+        <td><input min="1" max="31" type="number" name="Day2" ></td>
+        <td><input min="1" max="31" type="number" name="Day3" ></td>
+        <td><input min="1" max="31" type="number" name="Day4" ></td>
+    </tr>
+</table></div>
+<hr>
+<p>
+    <div id="fldigi-sched-container">
+        <!-- Main items will go here -->
+    </div>
+    <button type="button" id="addFldigiBtn">Add fldigi</button>
+</P>
+<hr>
+<hr>
+<p>
+    <div id="winlink-sched-container">
+        <!-- Main items will go here -->
+    </div>
+    <button type="button" id="add-winlink-btn">Add Winlink Sched</button>
+</P>
+<hr>
+<hr>
+<p>
+    <div id="varac-sched-container">
+        <!-- Main items will go here -->
+    </div>
+    <button type="button" id="add-varac-btn">Add Varac Sched</button>
+</P>
+<hr>
+<p>
+<input type='submit' name='Submit' value='Submit' method='Post' enctype='multipart/form-data' />
+&nbsp;&nbsp;&nbsp;
+<input type='submit' name='Submit' value='Cancel' method='Post' enctype='multipart/form-data' />
+</p>
+</form>
+
