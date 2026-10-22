@@ -1,11 +1,11 @@
 Type: Winlink
 Form: MDC_EMCOMM_Target_Station.html
 Def: address=MDCWINLINK-1
-Def: ccstations=AC3EW; K3JSJ; KB3SPH; KG4K; KN3U; N3HU; N3WOF; NS3X
+Def: ccstations=K3JSJ; KB3SPH; KN3U; N3HU; N3WOF; NS3X
 
 To: <var address>
 Cc: <var ccstations>
-Subject:<Callsign> - <var Day1>-<var Day2> <var ExMonth> <var ExYear> MDC DIGITAL EMCOMM CHALLENGE SCHED
+Subject:<Callsign> - <var Day1>-<var Day3> <var ExMonth> <var ExYear> MDC DIGITAL EMCOMM CHALLENGE SCHED
 Location: <Position>
 Readonly: No
 Msg:
@@ -28,7 +28,7 @@ VarAC
 VarAC HF Target Station Callsign: <Callsign>
 Mode of Operation: ADVANCED AWAY
 Bands: 80M, 40M, 30M
-Dates of operation: <var Day3>-<var Day4> <var ExMonth>
+Dates of operation: <var Day3> <var ExMonth>
 
 ** NOTE **
 ** Generated using Winlink template available at: https://github.com/kd2qar/winlink-templates/ **
